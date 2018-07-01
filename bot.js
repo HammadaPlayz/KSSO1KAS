@@ -31,7 +31,7 @@ client.user.setGame(`$help | NoobBot 0.2 v  ${client.guilds.size} Servers  `,"ht
 
 
 
-client.login('NDYwNDkxMTI5MDYyOTQ4ODc0.DhhjCg.nS_M4yR6xCDFvG9EUfgoBs2axbg');
+client.login('process.env.BOT_TOKEN');
 
 
 
