@@ -1803,3 +1803,4 @@ client.on('message', function(msg) {
     // And send it
     message.channel.send(`\`\`\`${guildArray.join("\n")}\`\`\``)
   }
+});
