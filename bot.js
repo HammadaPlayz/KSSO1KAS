@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | NoobBot 0.2 v  ${client.guilds.size} Servers  `,"http://twitch.tv/S-F")
+client.user.setGame(`$help | ${client.guilds.size} Servers  | NoobBot 0.2  `,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -31,7 +31,7 @@ client.user.setGame(`$help | NoobBot 0.2 v  ${client.guilds.size} Servers  `,"ht
 
 
 
-client.login('process.env.BOT_TOKEN');
+client.login('NDYwNDkxMTI5MDYyOTQ4ODc0.DhjMfQ._igJVCXBRqCNGliPPBbUvHmVT6s');
 
 
 
@@ -76,6 +76,8 @@ $kick [new] | اعطاء العضو كيك
 $ban [new] | اعطاء العضو بان
 $mute [new] | اعطاء العضو ميوت
 $unmute [new] | فك الميوت من العضو
+$روم مؤقت [new] | صنع روم مؤقت
+$bc-user [new] | خاصيه البورد كاست لشخص واحد فقط
 -=-=-=-=-  :speaking_head:   اوامر عامه :speaking_head:   -=-=-=-=-
 $avatar | لرئيه صورتك
 $server | لرئيه معلومات عن السيرفر
@@ -85,16 +87,18 @@ $emoje-text | يكبت الكلام مالتك بل يموجي
 $punch | يعطي شخص كف
 $day [new] | يعرض لك الوقت والتاريخ
 $stim [new] | لصنع منبه
-$cat [new] | يرسل صور قطط عشوائيه
+$credits [new] | يعرض الكريدتس مالتك
 -=-=-=-=-  :video_game:    اوامر الاعاب :video_game:    -=-=-=-=-
 $صراحه
 $كت تويت
 $لو خيروك
 $rps [حجر - ورقه - مقص]
 $عقاب 
-$مريم
+$مريم 
+-=-=-=-=- :credit_card:  العاب تجيب كريدت :credit_card:  -=-=-=-=
 $عواصم [new] | لعبه عواصم
--=-=-=-=-
+$فكك [new] | لعبه فكك
+$يموجي [soon] | لعبه يموجي
 سيرفر السبورت : https://discord.gg/9bYFkab
 `);
        }
@@ -109,6 +113,44 @@ client.on('message', msg => {
 
 
 
+ 
+
+
+
+
+
+
+
+
+client.on('message', message => {
+     if(message.content.startsWith(prefix + "bc-user")) {
+ let args = message.content.split(" ").slice(1);
+
+    var user = message.mentions.users.first();
+    var reason = args.slice(1).join(' ');
+    const embed = new Discord.RichEmbed()
+        .setColor(0xFFB200)
+        .setTimestamp();
+
+    if (!user) {
+        embed.addField("Noobbot", `تبي من يجيه الرساله؟ ${message.author.tag}?`)
+            .setFooter(`NoobBot`);
+        return message.channel.send({embed});
+    } if (!reason) {
+        embed.addField("Noobbot", `تبي الرساله وش؟ ${user.tag}?`)
+        return message.channel.send({embed});
+    }
+    embed.addField("NoobBot", `تم بنجاح${user.tag}!`)
+        .setFooter(`Noob Bot :>`);
+    message.channel.send({embed});
+    const embed1 = new Discord.RichEmbed()
+        .setColor(0xFFB200)
+        .setTimestamp()
+        .addField("جاتك رساله", `**${reason}**`)
+        .setFooter(`من ${message.author.tag}.`);
+    user.send({embed: embed1});
+}
+});
 
 
 
@@ -119,13 +161,11 @@ client.on('message', msg => {
 
 
 
-client.on("message", async message => {
-if (message.content.startsWith(prefix + 'cat')) {
-get("https://random.cat/meow").then(cat => {
-var embed = new Discord.RichEmbed()
-.setImage(cat.body.file)
-message.channel.send({embed})
-})};});
+
+
+
+
+
 
 
 
@@ -180,7 +220,18 @@ client.on('message', message => {
 
 
 
-
+client.on("message", message => {
+     var prefix = "$";
+    if(message.content.startsWith(prefix + 'روم مؤقت')) {
+     let args = message.content.split(" ").slice(1);
+       var nam = args.join(' ');
+    
+      if(!message.member.hasPermission('ADMINISTRATOR')) return    message.channel.send('`ADMINISTRATOR` للأسف هذه الخاصية تحتاج الى ').then(msg => msg.delete(6000))
+      if (!nam) return message.channel.send(`<@${message.author.id}> يجب عليك ادخال اسم`).then(msg => msg.delete(10000))
+      message.guild.createChannel(name, 'voice').then(c => setTimeout(() => c.delete(), 120000)) // كل 60 تساوي دقيقة عدل عليها الوقت لي تبيه 
+      message.channel.send(`☑ TemporarySound : \`${nam}\``).then(c => setTimeout(() => c.edit(`<@${message.author.id}> ⏱  انتهى وقت الروم الصوتي`), 120000))  // 120000 دقيقتان
+    }
+    });
 
 
 
@@ -487,18 +538,83 @@ client.on('guildMemberAdd', member => {
 	
 	
 	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+
+	
+
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
+  };
+if (message.content.startsWith(prefix + 'فكك')) { 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+const type = require('./fakk/fakk.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then(msg => {
+    let embed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setFooter("فكك  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setDescription(`**قم بكتابه الكلمه مفككه : ${item.type}**`)
+
+    msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **مبروك  50 كريدت  **`); //mohamed192837465#7033 صاحب الكود
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: **لا يوجد احد فكك الكلمه بلوقت المناسب**`);
+            console.log(`[Typing] Error: No one type the word.`);
+          })
+        })
+    })
+}
+});
+
+
+
+
+
+
+
+			
+
+
+
+	
+
+
+
+	
 
 	
 	
 	
 	
 	const fs = require('fs')
-let points = JSON.parse(fs.readFileSync('./PTS.json', 'utf8'));
+let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
 
 
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
-    points: 0,
+    points: 50,
   };
 if (message.content.startsWith(prefix + 'عواصم')) { 
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
@@ -511,13 +627,13 @@ const filter = response => {
 message.channel.send('**لديك 15 ثانية لتوجد عاصمة **').then(msg => {
     let embed = new Discord.RichEmbed()
     .setColor('#000000')
-    .setFooter("عواصم  | Super Bot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setFooter("عواصم  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
     .setDescription(`**قم بكتابة عاصمة : ${item.type}**`) // ${item.type} = السؤال
 
     msg.channel.sendEmbed(embed).then(() => {
         message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
         .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **لقد قمت بكتابة العاصمة بالوقت المناسب**`);
+        message.channel.send(`${collected.first().author} ✅ **مبروك 50 كريدت**`);
         console.log(`[Typing] ${collected.first().author} typed the word.`);
             let won = collected.first().author; 
             points[won.id].points++;
@@ -530,6 +646,19 @@ message.channel.send('**لديك 15 ثانية لتوجد عاصمة **').then(m
     })
 }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 	
@@ -735,17 +864,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
-client.on('message', message => {
-            if(!message.channel.guild) return;
-let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('$bcall')){
- if(!message.author.id === '452292328569307137') return;
-message.channel.sendMessage('جار ارسال الرسالة |✅')
-client.users.forEach(m =>{
-m.sendMessage(args)
-})
-}
-});
+
 
 
 
@@ -771,16 +890,16 @@ client.on("message", message => {
   let userData = points[message.author.id];
   userData.points++;
 
-  let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));
+  let curLevel = Math.floor(0.50 * Math.sqrt(userData.points));
   if (curLevel > userData.level) {
     // Level up!
     userData.level = curLevel;
-     message.reply(`**لقد وصلت الى المستوى ${curLevel}**`).then(m => m.delete(100000));
+     message.reply(`**Noobbot**`).then(m => m.delete(50));
   }
 
-  if (message.content.startsWith(prefix + "level")) {
+  if (message.content.startsWith(prefix + "credits")) {
     
-      message.reply(` ** انت في المستوى ${userData.level}  مع ${userData.points} نقاط . ** `).then(m => m.delete(100000));
+      message.reply(` **${userData.points} كريدت . ** `).then(m => m.delete(0));
 
   }
   fs.writeFile("./points.json", JSON.stringify(points), (err) => {
@@ -1333,19 +1452,7 @@ const den = [
   
   
   
-    client.on('message', message => {
-			var prefix = "$"
-      if (message.content.startsWith(prefix + "عقاب")) {
-                   if(!message.channel.guild) return message.reply('** This command only for servers**');
-     var embed = new Discord.RichEmbed()
-     .setColor('RANDOM')
-      .setThumbnail(message.author.avatarURL) 
-    .addField('Legend Brmoon.' ,
-     `${Za7f[Math.floor(Math.random() * Za7f.length)]}`)
-     message.channel.sendEmbed(embed);
-     console.log('[38ab] Send By: ' + message.author.username)
-       }
-   });
+
    
    
    
@@ -1696,4 +1803,3 @@ client.on('message', function(msg) {
     // And send it
     message.channel.send(`\`\`\`${guildArray.join("\n")}\`\`\``)
   }
-});
