@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | $invite`,"http://twitch.tv/S-F")
+client.user.setGame(`$help | ${client.guilds.size} Servers  | NoobBot 0.2  `,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -28,7 +28,10 @@ client.user.setGame(`$help | $invite`,"http://twitch.tv/S-F")
   console.log('')
 });
 
-client.login(process.env.BOT_TOKEN);
+
+
+
+client.login('NDYwNDkxMTI5MDYyOTQ4ODc0.DhqWGA.e758MN96A5TD_lG5iEFiYkTlSPs');
 
 
 
@@ -36,17 +39,24 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-client.on('message', message => {
-            if(!message.channel.guild) return;
-let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('$bcall')){
- if(!message.author.id === '452292328569307137') return;
-message.channel.sendMessage('جار ارسال الرسالة |✅')
-client.users.forEach(m =>{
-m.sendMessage(args)
-})
-}
-});
+
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
 
 
 
@@ -76,8 +86,8 @@ $emoje-text | يكبت الكلام مالتك بل يموجي
 $punch | يعطي شخص كف
 $day  | يعرض لك الوقت والتاريخ
 $stim  | لصنع منبه
-$credits  | يعرض الكريدتس مالتك
 $members | عدد الاعضاء وحالتهم
+$ping | بونق , كود البنق
 -=-=-=-=-  :video_game:    اوامر الاعاب :video_game:    -=-=-=-=-
 $صراحه
 $كت تويت
@@ -85,8 +95,8 @@ $لو خيروك
 $rps [حجر - ورقه - مقص]
 $عقاب 
 $مريم 
-$عواصم [new] | لعبه عواصم
-$فكك [new] | لعبه فكك
+$فكك 
+$عواصم
 سيرفر السبورت : https://discord.gg/9bYFkab
 `);
        }
@@ -100,6 +110,72 @@ client.on('message', msg => {
 
 
 
+client.on("message", message => {
+      if (message.content === "$ping") {
+      const embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .addField('**Pong!:**' , `${Date.now() - message.createdTimestamp}` + ' ms')
+  message.channel.sendEmbed(embed);
+    }
+});
+
+
+
+
+
+
+
+
+
+client.on('message', message => {
+            if(!message.channel.guild) return;
+let args = message.content.split(' ').slice(1).join(' ');
+if (message.content.startsWith('$bcall')){
+ if(!message.author.id === '452292328569307137') return;
+message.channel.sendMessage('جار ارسال الرسالة |✅')
+client.users.forEach(m =>{
+m.sendMessage(args)
+})
+}
+});
+
+
+
+
+client.on('message', async message => {
+   if(message.content.startsWith(prefix + "daily")) {
+    let cooldown = 8.64e+7,
+    amount = 250
+
+    let lastDaily = await db.fetch(`lastDaily_${message.author.id}`)
+    try {
+    db.fetch(`userBalance_${message.member.id}`).then(bucks => {
+    if(bucks == null){
+        db.set(`userBalance_${message.member.id}`, 50)}
+
+    else if (lastDaily !== null && cooldown - (Date.now() - lastDaily) > 0) {
+        let timeObj = ms(cooldown - (Date.now() - lastDaily))
+
+        let lastDailyEmbed = new Discord.RichEmbed()
+        .setAuthor(`Next Daily`)
+        .setColor('#ffffff')
+        .setDescription(`You sucessfully collected this, you must wait to collect next dily. Time Left: **${timeObj}**!`)
+        .setFooter('Requested By ' + message.author.tag, message.author.avatarURL)
+        message.channel.send(lastDailyEmbed)
+    } else {
+        db.set(`lastDaily_${message.author.id}`, Date.now());
+        db.add(`userBalance_${message.member.id}`, amount).then(i => {
+          var discord = require('discord.js')
+          var embed = new Discord.RichEmbed()
+          .setTitle('Todays Daily')
+          .setDescription(`Sucessfully collected :dollar:$${amount}`)
+          .setColor('#ffffff')
+          .setFooter('Requested By ' + message.author.tag, message.author.avatarURL)
+          message.channel.send(embed);
+        })}
+    })} catch(err) {console.log(err)}
+}
+});
 
  
 
@@ -313,11 +389,8 @@ client.on('message', message => {
 
 
 
- client.on('guildCreate', guild => {
-  client.channels.get("462459356697460746").send(`**سيرفر جديد ضاف البوت✅
-Server name: __${guild.name}__
-Server owner: __${guild.owner}__**`)
-}); 
+
+
 
 
 
@@ -561,7 +634,6 @@ client.on('guildMemberAdd', member => {
 	
 	
 	
-	
 
 	
 	
@@ -574,9 +646,7 @@ client.on('guildMemberAdd', member => {
 	
 
 client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 50,
-  };
+
 if (message.content.startsWith(prefix + 'فكك')) { 
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
@@ -594,7 +664,7 @@ message.channel.send('**لديك 15 ثانيه لتفكيك الجمله **').th
     msg.channel.sendEmbed(embed).then(() => {
         message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
         .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **مبروك 5 كريدت**`);
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`);
         console.log(`[Typing] ${collected.first().author} typed the word.`);
             let won = collected.first().author; 
             points[won.id].points++;
@@ -622,20 +692,9 @@ message.channel.send('**لديك 15 ثانيه لتفكيك الجمله **').th
 
 
 
+const fs = require('fs')
 	
-
-	
-	
-	
-	
-	const fs = require('fs')
-let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
-
-
 client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 200,
-  };
 if (message.content.startsWith(prefix + 'عواصم')) { 
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
@@ -653,7 +712,7 @@ message.channel.send('**لديك 15 ثانية لتوجد عاصمة **').then(m
     msg.channel.sendEmbed(embed).then(() => {
         message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
         .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **مبروك 5 كريدت**`);
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`);
         console.log(`[Typing] ${collected.first().author} typed the word.`);
             let won = collected.first().author; 
             points[won.id].points++;
@@ -666,6 +725,10 @@ message.channel.send('**لديك 15 ثانية لتوجد عاصمة **').then(m
     })
 }
 });
+	
+	
+
+
 
 
 
@@ -897,36 +960,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
-// امر الفل level
 
-client.on("message", message => {
-  if (!message.content.startsWith(prefix)) return;
-  if (message.author.bot) return;
-
-  if (!points[message.author.id]) points[message.author.id] = {
-    points: 0,
-    level: 0
-  };
-  let userData = points[message.author.id];
-  userData.points++;
-
-  let curLevel = Math.floor(0.50 * Math.sqrt(userData.points));
-  if (curLevel > userData.level) {
-    // Level up!
-    userData.level = curLevel;
-     message.reply(`**Noobbot**`).then(m => m.delete(3000));
-  }
-
-  if (message.content.startsWith(prefix + "credits")) {
-    
-      message.reply(` **${userData.points} كريدت . ** `).then(m => m.delete(3000));
-
-  }
-  fs.writeFile("./points.json", JSON.stringify(points), (err) => {
-    if (err) console.error(err)
-  });
-
-});
 
 
 
