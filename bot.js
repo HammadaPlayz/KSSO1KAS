@@ -39,10 +39,7 @@ client.login('NDYwNDkxMTI5MDYyOTQ4ODc0.DhqWGA.e758MN96A5TD_lG5iEFiYkTlSPs');
 
 
 
-client.on('message', message => {
-if (message.content.startsWith("$stream")) {
-               let args = message.content.split(' ').slice(1);
-               msg.set.botIcon('args.join(" ")
+
 
 
 
