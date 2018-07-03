@@ -31,7 +31,7 @@ client.user.setGame(`$help | ${client.guilds.size} Servers  | NoobBot 0.2  `,"ht
 
 
 
-client.login('NDYwNDkxMTI5MDYyOTQ4ODc0.DhqWGA.e758MN96A5TD_lG5iEFiYkTlSPs');
+client.login(process.env.BOT_TOKEN);
 
 
 
@@ -388,7 +388,13 @@ client.on('message', message => {
 
 
 
-
+client.on('message', message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes('https://')){
+        message.delete()
+    return message.reply(`**حبي ممنوع نشر اي روابط:joy: **`)
+    }
+});
 
 
 
@@ -650,7 +656,7 @@ client.on('message', message => {
 if (message.content.startsWith(prefix + 'فكك')) { 
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./fakk/fakk.json'); 
+const type = require('./fakk.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -698,7 +704,7 @@ client.on('message', message => {
 if (message.content.startsWith(prefix + 'عواصم')) { 
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./3wasem/3wasem.json'); 
+const type = require('./3wasem.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
