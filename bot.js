@@ -279,7 +279,47 @@ function search_video(query, cb) {
 
 
 
+const Discord = require('discord.js');
+const manager = require('manager');
+const cpa = require('code-point-at');
+const dpager = require('dynongo-pager')
+const arraySort = require('array-sort');
+const table = require('table');
+const send = require("quick.hook");
+const antihack = new Discord.Client();
 
+antihack.on('guildMember.ban', guildMember => {
+var trust = guild.member.hasPermission(ADMINISTRATOR)
+var trust2 = guild.member.hasPermission(MANAGE_GUILD)
+var trust3 = guild.member.hasPermission(BAN_MEMBERS)
+var trust4 = guild.member.hastPermission(KICK_MEMBERS)
+var bansize = await message.guild.fetchBans().catch(error => {
+});
+manager.get.bansize('3');
+if(bansize === '3')
+cpa.getinfo(`${dpager}`)
+arraySort(ban, 'size', {
+    reverse: true
+});
+let banif3 = [
+    ['LOG', 'BANNED']
+];
+getbans.forEach(function(ban) {
+    banif3.push([ban.by, ban.id]);
+})
+table.get('3').then(m => m.log('logs').send('logbans'))
+if(send('banlogs')) return;
+if(dpager.has.bansize('3')) return;
+if(!guild.member.id === "YOUR ID") return;
+if(bansize.size === '3')
+if(trust.has.bansize.size('3')) return trust.ban
+if(trust2.has.bansize.size('3')) return trust2.ban
+if(trust3.has.bansize.size('3')) return trust3.ban
+if(trust4.has.bansize.size('3')) return trust4.ban
+
+console.log('online')
+antihack.login('TOKEN')
+});
 
 
 
@@ -302,6 +342,10 @@ $ban  | اعطاء العضو بان
 $mute  | اعطاء العضو ميوت
 $unmute  | فك الميوت من العضو
 $bc-user  | خاصيه البورد كاست لشخص واحد فقط
+-=-=-=-=-  :loud_sound:  اوامر الميوزج :loud_sound:   -=-=-=-=-
+$play | تشغيل اغاني
+$stop | توقيف الاغاني
+$queue | قائمه الاعاني
 -=-=-=-=-  :speaking_head:   اوامر عامه :speaking_head:   -=-=-=-=-
 $avatar | لرئيه صورتك
 $server | لرئيه معلومات عن السيرفر
