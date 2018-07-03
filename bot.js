@@ -39,13 +39,12 @@ client.login('NDYwNDkxMTI5MDYyOTQ4ODc0.DhqWGA.e758MN96A5TD_lG5iEFiYkTlSPs');
 
 
 client.on('message', message => {
-    var adminprefix = "$$"
-        let args = msg.content.split(" ").slice(1);
-           if(message.content.startsWith(adminprefix + "set-stream")) {
-               message.user.setGame(`${args}`,"http://twitch.tv/Mohamed192837465")
-           }
+    var adprefix = "$$";
+    if (message.content.startsWith(prefix + "stream")) {
+                    const args = message.content.split(" ").slice(1).join(" ")
+                                   msg.user.setGame(`$args.join`,"http://twitch.tv/Mohamed192837465")
+		   }
 })
-
 
 
 
