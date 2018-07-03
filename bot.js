@@ -279,7 +279,6 @@ function search_video(query, cb) {
 
 
 
-const Discord = require('discord.js');
 const manager = require('manager');
 const cpa = require('code-point-at');
 const dpager = require('dynongo-pager')
