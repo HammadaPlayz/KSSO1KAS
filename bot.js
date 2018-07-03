@@ -672,8 +672,6 @@ message.channel.send('**لديك 15 ثانيه لتفكيك الجمله **').th
           .catch(collected => { 
             message.channel.send(`:x: *لم يقم احد بكتابه الكلمه مفككه صحيح**`);
             console.log(`[Typing] Error: No one type the word.`);
-                let lose =.first().author;
-                points[won.id].points++;
           })
         })
     })
