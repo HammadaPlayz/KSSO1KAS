@@ -41,9 +41,10 @@ client.login('NDYwNDkxMTI5MDYyOTQ4ODc0.DhqWGA.e758MN96A5TD_lG5iEFiYkTlSPs');
 
 client.on('message', message => {
     var adminprefix = "$$"
+        let args = msg.content.split(" ").slice(1);
            if(message.content.startsWith(adminprefix + "set-stream")) {
-               client.user.setGame(`$args.join`,"http://twitch.tv/Mohamed192837465")
-		   }
+               client.user.setGame(`${args}`,"http://twitch.tv/Mohamed192837465")
+           }
 })
 
 
