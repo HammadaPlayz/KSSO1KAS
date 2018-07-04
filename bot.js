@@ -40,7 +40,6 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-const Discord = require('discord.js');
 const client = new Discord.Client();
 const ms = require("ms");
 const fs = require("fs");
