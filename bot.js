@@ -241,7 +241,7 @@ client.on('message', function(message) {
     }
     else if (mess.startsWith(prefix + 'play')) {
         if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
-        if (isPlaying == false) return message.channel.send(':anger: || **__تم التوقيف__**');
+        if (Playing == false) return message.channel.send(':anger: || **__تم التوقيف__**');
         let playing_now_info = new Discord.RichEmbed()
             .setAuthor(client.user.username, client.user.avatarURL)
             .addField('تمت إضافةالاغنيه بقائمة الإنتظار', `**
