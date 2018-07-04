@@ -40,8 +40,7 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-const ms = require("ms");
-const fs = require("fs");
+
 const express = require("express");
 const crimes = require("./crimes.json");
 
