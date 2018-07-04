@@ -37,9 +37,9 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-var prefix = "$";
 const sql = require("sqlite");
 client.on("message", async message => {
+    if (message.content.startsWith(prefix + "angaz")) {
          var ids = [
             "20",
             "1",
