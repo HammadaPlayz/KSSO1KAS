@@ -40,26 +40,68 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-client.on("message", async message => {
-           let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith(prefix + 'giveaway')) {
-    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-    if (message.author.id !== message.guild.owner.id) {
-    message.channel.send('**هادا الامر لصاحب السيرفر فقط**' );
-      return;
+client.on("channelDelete", async channel => {
+  let audits = channel.guild.fetchAuditLogs({
+    limit: 1,
+    type: 'CHANNEL_DELETE'
+  })
+  let badMember = audits.entries.map(a => a.executor.username);
+ let badMember2 = audits.entries.map(a => a.executor);
+  if(crimes[badMember2.id].deletes >= 3){
+    let logs = channel.guild.channels.find("name", "logs")
+    if(!logs) return;
+    let embed = new Discord.RichEmbed()
+    .setColor("RANDOM")
+    .setTitle(channel.guild.name)
+    .addField("Channel deleted", `Channel name: ${channel.name}`)
+    .addField("Deleted by:", badMember)
+    .setFooter(channel.name)
+    .setTimestamp();
+    logs.send(embed)
+    badMember.send("Careful, your being watched...")
+    let badRole = channel.guild.roles.find("name", "Possible Spammer")
+    if(!badRole) return ("Possible Spammer")
+    
+  } else {
+    let crimes = JSON.parse(fs.readFileSync("./crimes.json", "utf8"));
+    let crimesnum = crimes[badMember.id].deletes
+    let newnum = crimesnum + 1
+    crimes[badMember.id] = {
+      deletes: newnum + 1
     }
-    const array = [];
-    message.guild.members.forEach((member) => {
-      array.push(member.user.tag);
+    channel.guild.member(badMember).ban("Griefing")
+    fs.writeFileSync("./crimes.json", JSON.stringify(crimes), (error) => {
+      if(error) console.log(error)
     });
-    const rand = array[Math.floor(Math.random() * array.length)];
-    message.channel.send(rand).then((m) => {
-      m.split('#');
-      m.edit(array);
-    });
+    console.log(`${badMember.username} deleted ${channel}`)
+    
+    setTimeout(function(){  //By MS Team
+      crimes[badMember.id] = {
+        deletes: crimesnum - 1 
+      }
+    ,ms(10000)  //By MS Team
+ });
+  }})
 
-    };
-});
+
+client.on("guildBanAdd", ban => {
+  let audits = ban.guilds.fetchAuditLogs({
+    limit: 1,
+    type: 'MEMBER_BANNED'
+  })
+  let MemberBanner = audits.entries.map(a => a.executor.username);
+  let MemberBanner1 = audits .entries.map(a => a.executor);
+  if(crimes[MemberBanner1.id].bans >= 3){
+    let logs = ban.guild.find('name', "logs")
+    if(!logs) return;
+    logs.send(`Member banned | banned by ${MemberBanner}`)
+    MemberBanner.send('You are being watched by anti hack');
+    let bannerrole = ban.guild.roles.find('name', 'Muted')
+    if(!bannerrole) return ("bannerrole")
+  } else {
+    let crimes = JSON.parse(fs.readFileSync("./crimes.json", "utf8"));
+  }})
+  client.login(config.token) 
 
 
 
