@@ -639,7 +639,7 @@ client.on('message', message => {
 if (message.content.startsWith(prefix + 'فكك')) { 
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./fakk/fakk.json'); 
+const type = require('./fakk.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -676,63 +676,7 @@ message.channel.send('**لديك 15 ثانيه لتفكيك الجمله **').th
 
 
 
-client.on("channelDelete", async channel => {
-  let audits = channel.guild.fetchAuditLogs()
-  let badMember = audits.executor
-  if(crimes[badMember.id].deletes >= 3){
-    let logs = channel.guild.channels.find(`name`, "logs")
-    if(!logs) return;
-    let embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
-    .setTitle(channel.guild.name)
-    .addField("Channel deleted", `Channel name: ${channel.name}`)
-    .setFooter(channel.name)
-    .setTimestamp();
-    logs.send(embed)
-    //remove role
-  } else {
-    let crimes = JSON.parse(fs.readFileSync("./crimes.json", "utf8"));
-    let crimesnum = crimes[badMember.id].deletes
-    let newnum = crimesnum + 1
-    crimes[badMember.id] = {
-      deletes: newnum + 1
-    }
-  
-    fs.writeFileSync("./crimes.json", JSON.stringify(crimes), (error) => {
-      if(error) console.log(error)
-    });
-    console.log(`${badMember.username} deleted ${channel}`)
-    
-    setTimeout(function(){
-      crimes[badMember.id] = {
-        deletes: crimenum - 1 
-      }
-    }, ms("10m"))
- }
-})
 
-
-
-client.on("message", async message => {
-           let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith(prefix + 'giveaway')) {
-    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-    if (message.author.id !== message.guild.owner.id) {
-    message.channel.send('**هادا الامر لصاحب السيرفر فقط**' );
-      return;
-    }
-    const array = [];
-    message.guild.members.forEach((member) => {
-      array.push(member.user.tag);
-    });
-    const rand = array[Math.floor(Math.random() * array.length)];
-    message.channel.send(rand).then((m) => {
-      m.split('#');
-      m.edit(array);
-    });
-
-    };
-});
 
 
 			
@@ -749,7 +693,7 @@ client.on('message', message => {
 if (message.content.startsWith(prefix + 'عواصم')) { 
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./3wasem/3wasem.json'); 
+const type = require('./3wasem.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
