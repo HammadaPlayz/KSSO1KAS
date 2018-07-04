@@ -84,26 +84,6 @@ client.on("channelDelete", async channel => {
   }})
 
 
-client.on("guildBanAdd", ban => {
-  let audits = ban.guilds.fetchAuditLogs({
-    limit: 1,
-    type: 'MEMBER_BANNED'
-  })
-  let MemberBanner = audits.entries.map(a => a.executor.username);
-  let MemberBanner1 = audits .entries.map(a => a.executor);
-  if(crimes[MemberBanner1.id].bans >= 3){
-    let logs = ban.guild.find('name', "logs")
-    if(!logs) return;
-    logs.send(`Member banned | banned by ${MemberBanner}`)
-    MemberBanner.send('You are being watched by anti hack');
-    let bannerrole = ban.guild.roles.find('name', 'Muted')
-    if(!bannerrole) return ("bannerrole")
-  } else {
-    let crimes = JSON.parse(fs.readFileSync("./crimes.json", "utf8"));
-  }})
-  client.login(config.token) 
-
-
 
 
 
