@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | ${client.guilds.size} Servers  | $invite   `,"http://twitch.tv/Mohamed192837465")
+client.user.setGame(`$help | ${client.guilds.size} Servers  | NoobBot 0.2  `,"http://twitch.tv/Mohamed192837465")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -37,59 +37,15 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-const sql = require("sqlite");
-client.on("message", async message => {
-    if (message.content.startsWith(prefix + "angaz")) {
-         var ids = [
-            "20",
-            "1",
-            "13",
-            "18",
-            "17",
-            "9",
-            "31",
-            "22",
-            "23",
-            "2",
-            "11",
-            "19",
-            "24",
-            "25",
-            "12",
-            "33"
-            ]
-            const randomizer = Math.floor(Math.random()*ids.length);
-            const args = message.content.split(" ").slice(1).join(" ")
-    if (!args) return message.channel.send("**اكتب محتوي الانجاز**");
-    const image = new Discord.Attachment(`https://www.minecraftskinstealer.com/achievement/a.php?i=${ids[randomizer]}&h=Achievement Get!&t=${args}`, "achievement.png");
-message.channel.send(image)
-    }
 
 
-  client.on('message', ReBeeL => {
-  var prefix = "$";
-    if(ReBeeL.author.bot) return;
-      if(ReBeeL.content.startsWith(prefix + "bcowner")) {
-        let args = ReBeeL.content.split(" ").slice(1);
-           if(!args[0]) {
-              ReBeeL.channel.send("** $bcowner <message> **")
-                return;
-                  }      
-                   var rebel = new Discord.RichEmbed()
-                      .setColor("#000000")
-                        .setDescription(`
-تم إرسآل لك رسآلة من السيرفر الخاص بك 
-${ReBeeL.guild.name}
-الرسآلة 
-${args}
-        `)
-        .setFooter(` بوآسطة ${ReBeeL.author.username}#${ReBeeL.author.discriminator}`)
-       ReBeeL.guild.owner.send(rebel);
-      ReBeeL.channel.send("**تم إرسآل الرسآلة إلى أونر السيرفر**")
-     }
-    }
-  );
-  
+
+
+
+
+
+
+                  
 
 
 
@@ -116,7 +72,7 @@ $kick  | اعطاء العضو كيك
 $ban  | اعطاء العضو بان
 $mute  | اعطاء العضو ميوت
 $unmute  | فك الميوت من العضو
-$bc-user  | بورد كاست لشخص واحد
+$bc-user  | خاصيه البورد كاست لشخص واحد فقط
 -=-=-=-=-  :speaking_head:   اوامر عامه :speaking_head:   -=-=-=-=-
 $avatar | لرئيه صورتك
 $server | لرئيه معلومات عن السيرفر
@@ -126,9 +82,9 @@ $emoje-text | يكبت الكلام مالتك بل يموجي
 $punch | يعطي شخص كف
 $day  | يعرض لك الوقت والتاريخ
 $stim  | لصنع منبه
-$angaz | يسوي انجاز مايكرفتي
 $members | عدد الاعضاء وحالتهم
-$ping | بونق , كود البنق
+$ping | بنق
+$angas | انجاز ماينكرفتي
 -=-=-=-=-  :video_game:    اوامر الاعاب :video_game:    -=-=-=-=-
 $صراحه
 $كت تويت
@@ -183,43 +139,35 @@ m.sendMessage(args)
 
 
 
-client.on('message', async message => {
-   if(message.content.startsWith(prefix + "daily")) {
-    let cooldown = 8.64e+7,
-    amount = 250
-
-    let lastDaily = await db.fetch(`lastDaily_${message.author.id}`)
-    try {
-    db.fetch(`userBalance_${message.member.id}`).then(bucks => {
-    if(bucks == null){
-        db.set(`userBalance_${message.member.id}`, 50)}
-
-    else if (lastDaily !== null && cooldown - (Date.now() - lastDaily) > 0) {
-        let timeObj = ms(cooldown - (Date.now() - lastDaily))
-
-        let lastDailyEmbed = new Discord.RichEmbed()
-        .setAuthor(`Next Daily`)
-        .setColor('#ffffff')
-        .setDescription(`You sucessfully collected this, you must wait to collect next dily. Time Left: **${timeObj}**!`)
-        .setFooter('Requested By ' + message.author.tag, message.author.avatarURL)
-        message.channel.send(lastDailyEmbed)
-    } else {
-        db.set(`lastDaily_${message.author.id}`, Date.now());
-        db.add(`userBalance_${message.member.id}`, amount).then(i => {
-          var discord = require('discord.js')
-          var embed = new Discord.RichEmbed()
-          .setTitle('Todays Daily')
-          .setDescription(`Sucessfully collected :dollar:$${amount}`)
-          .setColor('#ffffff')
-          .setFooter('Requested By ' + message.author.tag, message.author.avatarURL)
-          message.channel.send(embed);
-        })}
-    })} catch(err) {console.log(err)}
-}
+const sql = require("sqlite");
+client.on("message", async message => {
+    if (message.content.startsWith(prefix + "angaz")) {
+         var ids = [
+            "20",
+            "1",
+            "13",
+            "18",
+            "17",
+            "9",
+            "31",
+            "22",
+            "23",
+            "2",
+            "11",
+            "19",
+            "24",
+            "25",
+            "12",
+            "33"
+            ]
+            const randomizer = Math.floor(Math.random()*ids.length);
+            const args = message.content.split(" ").slice(1).join(" ")
+    if (!args) return message.channel.send("**اكتب محتوي الانجاز**");
+    const image = new Discord.Attachment(`https://www.minecraftskinstealer.com/achievement/a.php?i=${ids[randomizer]}&h=Achievement Get!&t=${args}`, "achievement.png");
+message.channel.send(image)
+	}
 });
-
  
-
 
 
 
@@ -691,7 +639,7 @@ client.on('message', message => {
 if (message.content.startsWith(prefix + 'فكك')) { 
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./fakk.json'); 
+const type = require('./fakk/fakk.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -725,6 +673,68 @@ message.channel.send('**لديك 15 ثانيه لتفكيك الجمله **').th
 
 
 
+
+
+
+client.on("channelDelete", async channel => {
+  let audits = channel.guild.fetchAuditLogs()
+  let badMember = audits.executor
+  if(crimes[badMember.id].deletes >= 3){
+    let logs = channel.guild.channels.find(`name`, "logs")
+    if(!logs) return;
+    let embed = new Discord.RichEmbed()
+    .setColor("RANDOM")
+    .setTitle(channel.guild.name)
+    .addField("Channel deleted", `Channel name: ${channel.name}`)
+    .setFooter(channel.name)
+    .setTimestamp();
+    logs.send(embed)
+    //remove role
+  } else {
+    let crimes = JSON.parse(fs.readFileSync("./crimes.json", "utf8"));
+    let crimesnum = crimes[badMember.id].deletes
+    let newnum = crimesnum + 1
+    crimes[badMember.id] = {
+      deletes: newnum + 1
+    }
+  
+    fs.writeFileSync("./crimes.json", JSON.stringify(crimes), (error) => {
+      if(error) console.log(error)
+    });
+    console.log(`${badMember.username} deleted ${channel}`)
+    
+    setTimeout(function(){
+      crimes[badMember.id] = {
+        deletes: crimenum - 1 
+      }
+    }, ms("10m"))
+ }
+})
+
+
+
+client.on("message", async message => {
+           let args = message.content.split(' ').slice(1);
+    if(message.content.startsWith(prefix + 'giveaway')) {
+    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+    if (message.author.id !== message.guild.owner.id) {
+    message.channel.send('**هادا الامر لصاحب السيرفر فقط**' );
+      return;
+    }
+    const array = [];
+    message.guild.members.forEach((member) => {
+      array.push(member.user.tag);
+    });
+    const rand = array[Math.floor(Math.random() * array.length)];
+    message.channel.send(rand).then((m) => {
+      m.split('#');
+      m.edit(array);
+    });
+
+    };
+});
+
+
 			
 
 
@@ -739,7 +749,7 @@ client.on('message', message => {
 if (message.content.startsWith(prefix + 'عواصم')) { 
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./3wasem.json'); 
+const type = require('./3wasem/3wasem.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
