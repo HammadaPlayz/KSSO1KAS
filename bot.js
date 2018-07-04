@@ -40,12 +40,10 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-const client = new Discord.Client();
 const ms = require("ms");
 const fs = require("fs");
 const express = require("express");
 const crimes = require("./crimes.json");
-let config = require("./config.json")
 
 client.on("channelDelete", cd => {
   const channel = cd.guild.channels.find('name', "logs")
