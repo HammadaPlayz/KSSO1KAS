@@ -132,12 +132,12 @@ let args = cont.slice(1);
 let sender = message.author
 if(message.content.startsWith('$trans')) {
           if (!args[0]) {
-            message.channel.send(`**$trans @mohamed192837465 عدد**`);
+            message.channel.send(`**منشن احد**`);
          return;
            }
         // We should also make sure that args[0] is a number
         if (isNaN(args[0])) {
-            message.channel.send(`**$trans @mohamed192837465 عدد**`);
+            message.channel.send(`**اكتب عدد**`);
             return; // Remember to return if you are sending an error message! So the rest of the code doesn't run.
              }
             let defineduser = '';
