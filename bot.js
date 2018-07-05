@@ -36,6 +36,16 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+client.on('message' , async (message) => {
+    if (message.content.startsWith(prefix + 'remove-role')) {
+		message.guild.removeRole('3')
+		message.guild.removeRole('2')
+		message.guild.removeRole('1')
+		message.guild.removeRole('4')
+	    message.guild.removeRole('5')
+	    message.guild.removeRole('10')
+	}
+})
 
 
 const crimes = require("./crimes.json");
