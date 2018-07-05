@@ -38,7 +38,89 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+const crimes = require("./crimes.json");
 
+client.on("channelDelete", cd => {
+  const channel = cd.guild.channels.find('name', "logs")
+  if(!channel) return;
+  if(channel) {
+    var embed = new Discord.RichEmbed()
+    .setColor('RANDOM')//random
+    .setTitle(cd.guild.name)
+    .addField("Channel Deleted",`Channel name: ${cd.name}`)
+    .setFooter(cd.name)
+    .setTimestamp();
+    channel.send(embed)
+}})
+       
+client.on("channelDelete", async channel => {
+  let audits = channel.guild.fetchAuditLogs({
+    limit: 1,
+    type: 'CHANNEL_DELETE'
+  })
+  let badMember = audits.entries.map(a => a.executor.username);
+ let badMember2 = audits.entries.map(a => a.executor);
+  if(crimes[badMember2.id].deletes >= 3){
+    let logs = channel.guild.channels.find("name", "logs")
+    if(!logs) return;
+    let embed = new Discord.RichEmbed()
+    .setColor("RANDOM")
+    .setTitle(channel.guild.name)
+    .addField("Channel deleted", `Channel name: ${channel.name}`)
+    .addField("Deleted by:", badMember)
+    .setFooter(channel.name)
+    .setTimestamp();
+    logs.send(embed)
+    badMember.send("Careful, your being watched...")
+    let badRole = channel.guild.roles.find("name", "Possible Spammer")
+    if(!badRole) return ("Possible Spammer")
+    
+  } else {
+    let crimes = JSON.parse(fs.readFileSync("./crimes.json", "utf8"));
+    let crimesnum = crimes[badMember.id].deletes
+    let newnum = crimesnum + 1
+    crimes[badMember.id] = {
+      deletes: newnum + 1
+    }
+    channel.guild.member(badMember).ban("Griefing")
+    fs.writeFileSync("./crimes.json", JSON.stringify(crimes), (error) => {
+      if(error) console.log(error)
+    });
+    console.log(`${badMember.username} deleted ${channel}`)
+    
+    setTimeout(function(){  //By MS Team
+      crimes[badMember.id] = {
+        deletes: crimesnum - 1 
+      }
+    ,ms(10000)  //By MS Team
+ });
+  }})
+
+
+client.on("guildBanAdd", ban => {
+  let audits = ban.guilds.fetchAuditLogs({
+    limit: 1,
+    type: 'MEMBER_BANNED'
+  })
+  let MemberBanner = audits.entries.map(a => a.executor.username);
+  let MemberBanner1 = audits .entries.map(a => a.executor);
+  if(crimes[MemberBanner1.id].bans >= 3){
+    let logs = ban.guild.find('name', "logs")
+    if(!logs) return; //BY MS Team
+    logs.send(`Member banned | banned by ${MemberBanner}`)
+    MemberBanner.send('You are being watched by anti hack');
+    let bannerrole = ban.guild.roles.find('name', 'Muted')
+    if(!bannerrole) return ("bannerrole")
+  } else {
+    let crimes = JSON.parse(fs.readFileSync("./crimes.json", "utf8"));
+  let crimesnum = crimes[MemberBanner1.id].bans
+  let newnum = crimesnum + 1
+  crimes[MemberBanner1.id] = {
+    bans: newnum + 1
+  } //ban 3 member = ban banner
+    return MemberBanner.ban
+///////////////////////////create 3 role = ban ///////////////////////////
+}})
 
 
 
