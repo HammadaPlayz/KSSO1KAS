@@ -31,7 +31,7 @@ client.user.setGame(`$help | ${client.guilds.size} Servers  | NoobBot 0.2  `,"ht
 
 
 
-client.login(process.env.BOT_TOKEN);
+client.login('process.env.BOT_TOKEN');
 
 
 
@@ -47,12 +47,9 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-const Canvas = require("canvas"); //npm i canvas
-const jimp = require("jimp"); //npm i jimp
-const moment = require("moment") //npm i moment
 // const Canvas = require("canvas-prebuilt"); // اذا كنت وندوز
 // npm i canvas-prebuilt
-
+const fs = require("fs"); // npm i fs
 
 let profile = JSON.parse(fs.readFileSync("./profile.json", "utf8"))
 client.on("message", message => {
@@ -569,7 +566,6 @@ client.on('message', message => {
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
   /*let b5bzlog = client.channels.find("name", "5bz-log");
-
   if(!b5bzlog) return message.reply("I've detected that this server doesn't have a 5bz-log text channel.");*/
   if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
   if(!reason) return message.reply ("**اكتب سبب الطرد**");
@@ -625,7 +621,6 @@ client.on('message', message => {
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
   /*let b5bzlog = client.channels.find("name", "5bz-log");
-
   if(!b5bzlog) return message.reply("I've detected that this server doesn't have a 5bz-log text channel.");*/
   if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
   if(!reason) return message.reply ("**اكتب سبب الطرد**");
@@ -743,11 +738,8 @@ var muteembeddm = new Discord.RichEmbed()
 .setAuthor(`Muted!`, user.displayAvatarURL)
 .setDescription(`
 ${user} انت معاقب بميوت كتابي بسبب مخالفة القوانين 
-
  ${message.author.tag} تمت معاقبتك بواسطة
-
 [ ${reason} ] : السبب
-
 اذا كانت العقوبة عن طريق الخطأ تكلم مع المسؤلين 
 `)
 .setFooter(`في سيرفر : ${message.guild.name}`)
@@ -968,7 +960,6 @@ message.channel.send('**لديك 15 ثانيه لتفكيك الجمله **').th
 
 
 
-const fs = require('fs')
 	
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'عواصم')) { 
@@ -2156,3 +2147,9 @@ client.on('message', function(msg) {
     message.channel.send(`\`\`\`${guildArray.join("\n")}\`\`\``)
   }
 });
+
+
+
+
+
+
