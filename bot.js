@@ -43,7 +43,6 @@ const moment = require("moment") //npm i moment
 // const Canvas = require("canvas-prebuilt"); // اذا كنت وندوز
 // npm i canvas-prebuilt
 
-let profile = JSON.parse(fs.readFileSync("./profile.json", "utf8"))
 client.on("message", message => {
  
   if (message.author.bot) return;
