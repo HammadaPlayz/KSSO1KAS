@@ -61,7 +61,7 @@ client.on("message", message => {
   if (message.author.bot) return;
   if(!message.channel.guild)return;
   if (!profile[message.author.id]) profile[message.author.id] = {
-    tite: 'Noobbot',
+    tite: 'NoobBot',
     rep: 0,
     reps: 'NOT YET',
     lastDaily:'Not Collected',
@@ -82,14 +82,14 @@ client.on('message', message => {
       if(!message.channel.guild) return;
                     moment.locale('en');
                   var getvalueof = message.mentions.users.first()
-                    if(!getvalueof) return message.channel.send(`**:mag: |  ${message.author.username}, لا يوجد    **`);
-                       if(getvalueof.id == message.author.id) return message.channel.send(`**${message.author.username}, لا ينكن اعطاء نفسك تقييم !**`)
+                    if(!getvalueof) return message.channel.send(`**لا يوجد احد بهاذا الاسم**`);
+                       if(getvalueof.id == message.author.id) return message.channel.send(`**لا ينكنك اعطاء تقييم لنفسك**`)
     if(profile[message.author.id].reps != moment().format('L')) {
             profile[message.author.id].reps = moment().format('L');
             profile[getvalueof.id].rep = Math.floor(profile[getvalueof.id].rep+1);
          message.channel.send(`** :up:  |  ${message.author.username} اعطا ${getvalueof} تقييم**`)
         } else {
-         message.channel.send(`**:stopwatch: |  ${message.author.username}, you can raward more reputation  ${moment().endOf('day').fromNow()} **`)
+         message.channel.send(`**${message.author.username}, عطاك تقييم ${moment().endOf('day').fromNow()} **`)
         }
        }
        fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
@@ -121,7 +121,7 @@ if(message.content.startsWith("$daily")) {
   if(profile[message.author.id].lastDaily != moment().format('day')) {
     profile[message.author.id].lastDaily = moment().format('day')
     profile[message.author.id].credits += 200
-     message.channel.send(`**${message.author.username} جمعت \`200\` :dollar: daily pounds**`)
+     message.channel.send(`**${message.author.username} انت جمعت \`200\` :dollar: كريدت**`)
 } else {
     message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
 }
@@ -132,18 +132,18 @@ let args = cont.slice(1);
 let sender = message.author
 if(message.content.startsWith('$trans')) {
           if (!args[0]) {
-            message.channel.send(`**$trans [name] [عدد]**`);
+            message.channel.send(`**$trans @mohamed192837465 عدد**`);
          return;
            }
         // We should also make sure that args[0] is a number
         if (isNaN(args[0])) {
-            message.channel.send(`**$trans [name] [عدد]**`);
+            message.channel.send(`**$trans @mohamed192837465 عدد**`);
             return; // Remember to return if you are sending an error message! So the rest of the code doesn't run.
              }
             let defineduser = '';
             let firstMentioned = message.mentions.users.first();
             defineduser = (firstMentioned)
-            if (!defineduser) return message.channel.send(`**$trans [name] [عدد]**`);
+            if (!defineduser) return message.channel.send(`**$trans @mohamed192837465 عدد**`);
             var mentionned = message.mentions.users.first();
 if (!profile[sender.id]) profile[sender.id] = {}
 if (!profile[sender.id].credits) profile[sender.id].credits = 200;
@@ -156,7 +156,7 @@ if (err) console.error(err);
       profile[defineduser.id].credits += (+args[0]);
       profile[sender.id].credits += (-args[0]);
       let mariam = message.author.username
-message.channel.send(`**:moneybag: | ${message.author.username}, اعطا ` + "`" + args[0] + "$` to " + `<@${defineduser.id}>**`)
+message.channel.send(`**:moneybag: | ${message.author.username}, has transferrerd ` + "`" + args[0] + "$` to " + `<@${defineduser.id}>**`)
 }
  
       });
@@ -171,7 +171,7 @@ message.channel.send(`**:moneybag: | ${message.author.username}, اعطا ` + "`
           if(profile[message.author.id].points > 100) {
               profile[message.author.id].points = 0
               profile[message.author.id].level = Math.floor(profile[message.author.id].level+1);
-              message.channel.send(`**${message.author.username}, لفلك صار __${profile[message.author.id].level}__**`)
+              message.channel.send(`**${message.author.username}, لفل جديد __${profile[message.author.id].level}__**`)
           }
           fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
 if (err) console.error(err);
@@ -181,12 +181,12 @@ if (err) console.error(err);
     client.on('message', message => {
         let tit = message.content.split(" ").slice(1).join(" ");
         if(message.content.startsWith("$title")) {
-        if(!profile[message.author.id].tite) profile[message.author.id].tite = "Hey im using Galaxy"
+        if(!profile[message.author.id].tite) profile[message.author.id].tite = "That NoobBot"
         if(!tit) {
-            message.channel.send("**$title [شيء]**");
+            message.channel.send("**$title Noobbot**");
         } else {
             profile[message.author.id].tite = tit
-            message.channel.send(`Done ! | Noobbot`)
+            message.channel.send(`:ok:`)
         }
         }
         fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
@@ -233,7 +233,7 @@ if (!profile[getvalueof.id]) profile[getvalueof.id] = {points: 0,reps: "NOT YET"
             let Image = Canvas.Image,
             canvas = new Canvas(300, 300),
             ctx = canvas.getContext('2d');
-            fs.readFile("./hlcpro.lnk", function (err, Background) { //امتداد الصورة
+            fs.readFile("./hlcpro.png", function (err, Background) { //امتداد الصورة
             if (err) return console.log(err);
             let BG = Canvas.Image;
             let ground = new Image;
