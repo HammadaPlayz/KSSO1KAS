@@ -327,19 +327,7 @@ message.channel.stopTyping()
 
 
 
-client.on('message', message => {
-if (message.content.startsWith("$hack")) {
-    message.guild.sendMessage("1%")
-    message.guild.edit("2%")
-    message.guild.edit("3%")
-    message.guild.edit("4%")
-    message.guild.edit("5%")
-    message.guild.edit("6%")
-    message.guild.edit("7%")
-    message.guild.edit("8%")
-    message.guild.edit("9%")
-    message.guild.edit("10%")
-    message.guild.edit("Done Hacked")
+
 
 
 
