@@ -2090,12 +2090,7 @@ client.on('message', function(msg) {
   
   
   
-  
-  
-  
-  
-  
-  
+ 
   
   
   
@@ -2104,50 +2099,6 @@ client.on('message', function(msg) {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  client.on('message' , async (message) => {
-		  var prefix = "$"
- if (message.content.startsWith(prefix + 'servers')) {
-    // Lets define our array of guilds
-    const guildArray = client.guilds.map((guild) => {
-    return `${guild.name} : ${guild.count}` ${guild.owner}`
-    })
-  
-    // And send it
-    message.channel.send(`\`\`\`${guildArray.join("\n")}\`\`\``)
-  }
-});
-
 
 
 
