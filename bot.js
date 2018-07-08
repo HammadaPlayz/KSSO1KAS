@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | $invite | ${client.guilds.size} Servers`,"http://twitch.tv/Mohamed192837465")
+client.user.setGame(`$help | $inv | ${client.guilds.size} Servers`,"http://twitch.tv/Mohamed192837465")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -39,7 +39,15 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-
+client.on('message', message => {
+  if(message.content === '$inv') {
+  const embed = new Discord.RichEmbed()
+  .setTitle('NoobBot Link')
+  .setURL('https://discordapp.com/oauth2/authorize?client_id=460491129062948874&permissions=2080374975&scope=bot')
+  .setColor('RANDOM')
+  message.channel.send({embed: embed});
+  }
+});
 
 
 
