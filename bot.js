@@ -45,136 +45,7 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-const fs = require("fs"); // npm i fs
-const Canvas = require("canvas"); //npm i canvas
-const jimp = require("jimp"); //npm i jimp
-const moment = require("moment") //npm i moment
-// const Canvas = require("canvas-prebuilt"); // اذا كنت وندوز
-// npm i canvas-prebuilt
 
-
-let profile = JSON.parse(fs.readFileSync("./profile.json", "utf8"))
-client.on("message", message => {
- 
-  if (message.author.bot) return;
-  if(!message.channel.guild)return;
-  if (![message.author.id]) profile[message.author.id] = {
-    tite: 'NoobBot',
-    rep: 0,
-    reps: 'NOT YET',
-    lastDaily:'Not Collected',
-    level: 0,
-    points: 0,
-    credits: 1,
-  };
- 
- 
-fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
-if (err) console.error(err);
-})
-});
- 
-client.on('message', message => {
- 
-    if(message.content.startsWith('$rep')) {
-      if(!message.channel.guild) return;
-                    moment.locale('en');
-                  var getvalueof = message.mentions.users.first()
-                    if(!getvalueof) return message.channel.send(`**لا يوجد احد بهاذا الاسم**`);
-                       if(getvalueof.id == message.author.id) return message.channel.send(`**لا ينكنك اعطاء تقييم لنفسك**`)
-    if(profile[message.author.id].reps != moment().format('L')) {
-            profile[message.author.id].reps = moment().format('L');
-            profile[getvalueof.id].rep = Math.floor(profile[getvalueof.id].rep+1);
-         message.channel.send(`** :up:  |  ${message.author.username} اعطا ${getvalueof} تقييم**`)
-        } else {
-         message.channel.send(`**${message.author.username}, عطاك تقييم ${moment().endOf('day').fromNow()} **`)
-        }
-       }
-       fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
-if (err) console.error(err);
-})
-});
- 
-client.on("message", (message) => {
-  let men = message.mentions.users.first()
- 
-  if (message.author.bot) return;
-    if (message.author.id === client.user.id) return;
-    if(!message.channel.guild) return;
-if (message.content.startsWith('$credit')) {
-  if(men) {
-    if (!profile[men.id]) profile[men.id] = {
-    lastDaily:'Not Collected',
-    credits: 1,
-  };
-  }
-  if(men) {
-message.channel.send(`** ${men.username}, :credit_card: balance` + " is `" + `${profile[men.id].credits}$` + "`.**")
-} else {
-  message.channel.send(`** ${message.author.username}, your :credit_card: balance` + " is `" + `${profile[message.author.id].credits}$` + "`.**")
-}
-}
- 
-if(message.content.startsWith("$daily")) {
-  if(profile[message.author.id].lastDaily != moment().format('day')) {
-    profile[message.author.id].lastDaily = moment().format('day')
-    profile[message.author.id].credits += 200
-     message.channel.send(`**${message.author.username} انت جمعت \`200\` :dollar: كريدت**`)
-} else {
-    message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
-}
-  }
- 
- let cont = message.content.slice(prefix.length).split(" ");
-let args = cont.slice(1);
-let sender = message.author
-if(message.content.startsWith('$trans')) {
-          if (!args[0]) {
-            message.channel.send(`**منشن احد**`);
-         return;
-           }
-        // We should also make sure that args[0] is a number
-        if (isNaN(args[0])) {
-            message.channel.send(`**اكتب عدد**`);
-            return; // Remember to return if you are sending an error message! So the rest of the code doesn't run.
-             }
-            let defineduser = '';
-            let firstMentioned = message.mentions.users.first();
-            defineduser = (firstMentioned)
-            if (!defineduser) return message.channel.send(`**$trans @mohamed192837465 عدد**`);
-            var mentionned = message.mentions.users.first();
-if (!profile[sender.id]) profile[sender.id] = {}
-if (!profile[sender.id].credits) profile[sender.id].credits = 200;
-fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
-if (err) console.error(err);
-})
-      var mando = message.mentions.users.id;
-      if  (!profile[defineduser.id]) profile[defineduser.id] = {}
-      if (!profile[defineduser.id].credits) profile[defineduser.id].credits = 200;
-      profile[defineduser.id].credits += (+args[0]);
-      profile[sender.id].credits += (-args[0]);
-      let mariam = message.author.username
-message.channel.send(`**:moneybag: | ${message.author.username}, has transferrerd ` + "`" + args[0] + "$` to " + `<@${defineduser.id}>**`)
-}
- 
-      });
- 
-      client.on('message', message => {
-          if(!profile[message.author.id]) profile[message.author.id] ={
-              points: 0,
-              level: 1
-          };
-          if(message.author.bot) return;
-          profile[message.author.id].points = Math.floor(profile[message.author.id].points+1);
-          if(profile[message.author.id].points > 100) {
-              profile[message.author.id].points = 0
-              profile[message.author.id].level = Math.floor(profile[message.author.id].level+1);
-              message.channel.send(`**${message.author.username}, لفل جديد __${profile[message.author.id].level}__**`)
-          }
-          fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
-if (err) console.error(err);
-})
-      })
  
 
                   
@@ -214,11 +85,6 @@ $emoje-text | يكبت الكلام مالتك بل يموجي
 $punch | يعطي شخص كف
 $day  | يعرض لك الوقت والتاريخ
 $stim  | لصنع منبه
-$members | عدد الاعضاء وحالتهم
-$rep |تقييم
-$daily| المصروف
-$trans | تحويل كريدت
-$credit | كريدت
 $ping | بنق
 $angaz | انجاز ماينكرفتي
 -=-=-=-=-  :video_game:    اوامر الاعاب :video_game:    -=-=-=-=-
@@ -1864,19 +1730,7 @@ client.on('message', function(msg) {
 	  
 	  
 	  
-	  
-	  client.on('message' , async (message) => {
-		  var prefix = "$"
- if (message.content.startsWith(prefix + 'servers')) {
-    // Lets define our array of guilds
-    const guildArray = client.guilds.map((guild) => {
-    return `${guild.name} : ${guild.count}` ${guild.owner}'
-    })
-  
-    // And send it
-    message.channel.send(`\`\`\`${guildArray.join("\n")}\`\`\``)
-  }
-});
+
 
 
 
