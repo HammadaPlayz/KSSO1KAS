@@ -848,10 +848,9 @@ client.on('guildMemberAdd', member => {
     let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setThumbnail(memberavatar)
-        .addField(':running_shirt_with_sash: | name :  ',`${member}`)
-        .addField(':loudspeaker: | منور يا خرافي' , `Welcome to the server, ${member}`)
-        .addField(':id: | user :', "**[" + `${member.id}` + "]**" )
-                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
+        .addField('مشرف السيرفر ' , `Welcome!, ${member}`)
+        .addField(':id: | ايدي العضو :', "**[" + `${member.id}` + "]**" )
+                .addField('➡| العضو رقم',`${member.guild.memberCount}`)
                
                   .addField("Name:",`<@` + `${member.id}` + `>`, true)
                      
@@ -867,9 +866,9 @@ client.on('guildMemberAdd', member => {
         var embed = new Discord.RichEmbed()
         .setAuthor(member.user.username, member.user.avatarURL)
         .setThumbnail(member.user.avatarURL)
-        .setTitle(`في احد خرج :raised_hand::skin-tone-1: :pensive:`)
+        .setTitle(`كنت منورنا :raised_hand::skin-tone-1: :pensive:`)
         .setDescription(`نتمنا انك استمتعت قبل الخروج من السيرفر :raised_hand::skin-tone-1: :pensive: `)
-        .addField(':bust_in_silhouette:   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
+        .addField('هناك الائن',`**[ ${member.guild.memberCount} ]**`,true)
         .setColor('RED')
         .setFooter(`==== NoobBot ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
     
@@ -2047,7 +2046,7 @@ client.on('message', function(msg) {
  if (message.content.startsWith(prefix + 'servers')) {
     // Lets define our array of guilds
     const guildArray = client.guilds.map((guild) => {
-    return `${guild.name}`
+    return `${guild.name} : ${guild.count}` ${guild.owner}'
     })
   
     // And send it
