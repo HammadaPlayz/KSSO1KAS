@@ -58,7 +58,7 @@ client.on("message", message => {
  
   if (message.author.bot) return;
   if(!message.channel.guild)return;
-  if (!profile[message.author.id]) profile[message.author.id] = {
+  if (![message.author.id]) profile[message.author.id] = {
     tite: 'NoobBot',
     rep: 0,
     reps: 'NOT YET',
@@ -231,7 +231,7 @@ if (!profile[getvalueof.id]) profile[getvalueof.id] = {points: 0,reps: "NOT YET"
             let Image = Canvas.Image,
             canvas = new Canvas(300, 300),
             ctx = canvas.getContext('2d');
-            fs.readFile("./hlcpro.png", function (err, Background) { //امتداد الصورة
+            fs.readFile("./noob.png", function (err, Background) { //امتداد الصورة
             if (err) return console.log(err);
             let BG = Canvas.Image;
             let ground = new Image;
@@ -841,41 +841,7 @@ client.on('message' , message => {
 
 
 
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'welcome');
-    let memberavatar = member.user.avatarURL
-      if (!channel) return;
-    let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail(memberavatar)
-        .addField('مشرف السيرفر ' , `Welcome!, ${member}`)
-        .addField(':id: | ايدي العضو :', "**[" + `${member.id}` + "]**" )
-                .addField('➡| العضو رقم',`${member.guild.memberCount}`)
-               
-                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
-                     
-                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
-                                       
-     .setFooter(`${member.guild.name}`)
-        .setTimestamp()
-   
-      channel.sendEmbed(embed);
-    });
-    
-    client.on('guildMemberRemove', member => {
-        var embed = new Discord.RichEmbed()
-        .setAuthor(member.user.username, member.user.avatarURL)
-        .setThumbnail(member.user.avatarURL)
-        .setTitle(`كنت منورنا :raised_hand::skin-tone-1: :pensive:`)
-        .setDescription(`نتمنا انك استمتعت قبل الخروج من السيرفر :raised_hand::skin-tone-1: :pensive: `)
-        .addField('هناك الائن',`**[ ${member.guild.memberCount} ]**`,true)
-        .setColor('RED')
-        .setFooter(`==== NoobBot ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
-    
-    var channel =member.guild.channels.find('name', 'welcome')
-    if (!channel) return;
-    channel.send({embed : embed});
-    }) 
+
 	
 	
 	
