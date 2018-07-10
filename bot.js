@@ -104,7 +104,7 @@ $عقاب
 $مريم
 -=-
 『LB』Mohamed192837465#7033 | اونر البوت
-سيرفر السبورت :https://discord.gg/q6FXhg
+سيرفر السبورت :https://discord.gg/9bYFkab
 `);
        }
 });
