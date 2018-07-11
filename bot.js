@@ -51,12 +51,7 @@ client.on('message', message => {
 
 
 
- client.on('guildCreate', guild => {
-  client.channels.get("466523364954079241").send(`**تم اضافة البوت في سيرفر جديد مبروكك
-Server name: __${guild.name}__
-Server id: __${guild.id}__
-Server owner: __${guild.owner}__**`)
-}); 
+
 
 
 
