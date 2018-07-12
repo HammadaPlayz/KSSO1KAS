@@ -57,41 +57,6 @@ client.on('message', message => {
 
                   
 
-client.on('message', msg =>{
-  let args = msg.content.split(" ").slice(2).join(" ")
-  let men = msg.mentions.users.first()
-  let mas = msg.author
-  msg.delete();
-  let defineduser = msg.mentions.users.first();
-  if(msg.content.startsWith(prefix + 'sar7a')) {
-      if(!args) return msg.channel.send("`Usage: " + prefix + 'sar7a <@someone> <message>`');
-      if(!men) return msg.channel.send("`Usage: " + prefix + 'sar7a <@someone> <message>`');
-        let Embed = new Discord.RichEmbed()
-   .setThumbnail('http://codeup.tk/s/do.php?img=30')
-   .addField('المصارح', 'مجهول', true)
-   .addField('تم مصارحتك',` ${args}`,)
-     .setColor(0xD4AF37)
-    defineduser.send(Embed)
-    msg.react("✅")
-}});
-
-client.on('message', msg =>{
-  let men = msg.mentions.users.first()
-  let args = msg.content.split(" ").slice(2).join(" ")
-  let user = msg.author
-  msg.delete();
-  let defineduser = msg.mentions.users.first();
-  if(msg.content.startsWith(prefix + 'sar7a-2')) {
-      if(!args) return msg.channel.send("`Usage: " + prefix + 'sar7a-2 <@someone> <message>`');
-      if(!men) return msg.channel.send("`Usage: " + prefix + 'sar7a-2 <@someone> <message>`');
-        let Embed = new Discord.RichEmbed()
-   .setThumbnail('http://codeup.tk/s/do.php?img=30')
-   .addField('المصارح', `${user}`,)
-   .addField('تم مصارحتك', args,)
-     .setColor(0xD4AF37)
-    defineduser.send(Embed)
-    msg.react("✅")
-}});
 
 
 
