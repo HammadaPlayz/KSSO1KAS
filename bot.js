@@ -37,7 +37,7 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('ready', function(){
     var ms = 10000 ;
-    var setGame = [' $help ','$help | $inv','${client.guilds.size} Servers ','Mohamed192837465','$help | $inv | ${client.guilds.size} Servers '];
+    var setGame = [' $help ','$help | $inv','$help | $invite','Mohamed192837465','$help | $inv | ${client.guilds.size} Servers '];
     var i = -1;
     var j = 0;
     setInterval(function (){
