@@ -4,7 +4,6 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setActivity('dnd')
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -39,7 +38,35 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+client.on('ready', function(){
+    var ms = 10000 ;
+    var setGame = [' $help | inv ','Noobbot','$help | $inv','Bot By Mohamed192837465','$help | $inv  '];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`http://www.twitch.tv/D.JPEI`);
+    }, ms);
 
+});
+
+
+
+client.on('message', message => {
+  if(message.content === '$inv') {
+  const embed = new Discord.RichEmbed()
+  .setTitle('NoobBot Link')
+  .setURL('https://discordapp.com/oauth2/authorize?client_id=460491129062948874&permissions=2080374975&scope=bot')
+  .setColor('RANDOM')
+  message.channel.send({embed: embed});
+  }
+});
 
 
 
