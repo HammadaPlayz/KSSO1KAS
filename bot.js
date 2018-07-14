@@ -65,7 +65,7 @@ client.on('message', message => {
     const embed1 = new Discord.RichEmbed()
         .setColor(0xFFB200)
         .setTimestamp()
-        .addField("تم تهكيرك يا نوب")
+        .addField(`تم تهكيرك يا نوب`)
 		.addField("سبب تهكيرك", `**${reason}**`)
         .setFooter(`من ${message.author.tag}.`);
     user.send({embed: embed1});
@@ -75,7 +75,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-     if(message.content.startsWith(prefix + "hack-2")) {
+     if(message.content.startsWith(prefix + "hacker-2")) {
  let args = message.content.split(" ").slice(1);
 
     var user = message.mentions.users.first();
@@ -98,7 +98,7 @@ client.on('message', message => {
     const embed1 = new Discord.RichEmbed()
         .setColor(0xFFB200)
         .setTimestamp()
-        .addField("تم تهكيرك يا نوب")
+        .addField(`تم تهكيرك يا نوب`)
 		.addField("سبب تهكيرك", `**${reason}**`)
         .setFooter(`الهكر غير معروف`);
     user.send({embed: embed1});
@@ -158,7 +158,7 @@ $emoje-text | يكبت الكلام مالتك بل يموجي
 $punch | يعطي شخص كف
 $day  | يعرض لك الوقت والتاريخ
 $hack | لعبه هكر مع ذكر اسمك
-$hack-2 | لعبه هكر من دون ذكر اسمك
+$hacker-2 | لعبه هكر من دون ذكر اسمك
 $stim  | لصنع منبه
 $ping | بنق
 $angaz | انجاز ماينكرفتي
