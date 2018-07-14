@@ -43,7 +43,7 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('message', message => {
      if(message.content.startsWith(prefix + "hack")) {
- let args = message.content.split(" ").slice(1);
+ let args = message.content.split(" ").slice(0);
 
     var user = message.mentions.users.first();
     const embed = new Discord.RichEmbed()
@@ -54,7 +54,6 @@ client.on('message', message => {
         embed.addField("Noobbot", `تبي تهكر من؟`)
             .setFooter(`Hacking`);
         return message.channel.send({embed});
-    } if (!reason) {
     embed.addField("NoobBot", `تم بنجاح${user.tag}!`)
         .setFooter(`Hacking`);
     message.channel.send({embed});
