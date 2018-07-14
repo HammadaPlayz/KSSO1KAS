@@ -41,6 +41,31 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+client.on('message', message => {
+     if(message.content.startsWith(prefix + "hack")) {
+ let args = message.content.split(" ").slice(1);
+
+    var user = message.mentions.users.first();
+    const embed = new Discord.RichEmbed()
+        .setColor(0xFFB200)
+        .setTimestamp();
+
+    if (!user) {
+        embed.addField("Noobbot", `تبي تهكر من؟`)
+            .setFooter(`Hacking`);
+        return message.channel.send({embed});
+    } if (!reason) {
+    embed.addField("NoobBot", `تم بنجاح${user.tag}!`)
+        .setFooter(`Hacking`);
+    message.channel.send({embed});
+    const embed1 = new Discord.RichEmbed()
+        .setColor(0xFFB200)
+        .setTimestamp()
+        .addField("تم تهكير جهازك يانوب")
+        .setFooter(` الهكر غير معروف`);
+    user.send({embed: embed1});
+}
+});
 
 
 
@@ -90,12 +115,11 @@ $bc-user  | خاصيه البورد كاست لشخص واحد فقط
 $avatar | لرئيه صورتك
 $server | لرئيه معلومات عن السيرفر
 $id | لرئيه معلومات عن حسابك
-$invite | لاعطائك رابط دعوه البوت
+$inv | لاعطائك رابط دعوه البوت
 $emoje-text | يكبت الكلام مالتك بل يموجي
 $punch | يعطي شخص كف
 $day  | يعرض لك الوقت والتاريخ
-$sara7 | مصارحه احد من دون ذكر اسمه
-$sara7-2 | مصارحه احد بذكر اسم المصارح
+$hack | تهكير شخص
 $stim  | لصنع منبه
 $ping | بنق
 $angaz | انجاز ماينكرفتي
