@@ -65,7 +65,7 @@ client.on('message', message => {
     const embed1 = new Discord.RichEmbed()
         .setColor(0xFFB200)
         .setTimestamp()
-        .addField(`تم تهكيرك يا نوب`)
+        .addField("NoobBot", `تم تهكيرك يا نوب`)
 		.addField("سبب تهكيرك", `**${reason}**`)
         .setFooter(`من ${message.author.tag}.`);
     user.send({embed: embed1});
@@ -98,7 +98,7 @@ client.on('message', message => {
     const embed1 = new Discord.RichEmbed()
         .setColor(0xFFB200)
         .setTimestamp()
-        .addField(`تم تهكيرك يا نوب`)
+        .addField("Noobbot", `تم تهكيرك يا نوب`)
 		.addField("سبب تهكيرك", `**${reason}**`)
         .setFooter(`الهكر غير معروف`);
     user.send({embed: embed1});
