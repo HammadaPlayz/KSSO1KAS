@@ -43,25 +43,64 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('message', message => {
      if(message.content.startsWith(prefix + "hack")) {
- let args = message.content.split(" ").slice(0);
+ let args = message.content.split(" ").slice(1);
 
     var user = message.mentions.users.first();
+    var reason = args.slice(1).join(' ');
     const embed = new Discord.RichEmbed()
         .setColor(0xFFB200)
         .setTimestamp();
 
     if (!user) {
-        embed.addField("Noobbot", `تبي تهكر من؟`)
-            .setFooter(`Hacking`);
+        embed.addField("Hacker", `تبي تهكر من؟`)
+            .setFooter(`Noobbot`);
         return message.channel.send({embed});
-    embed.addField("NoobBot", `تم بنجاح${user.tag}!`)
-        .setFooter(`Hacking`);
+    } if (!reason) {
+        embed.addField("Hacker", `اكتب سبب تهكيره`)
+        return message.channel.send({embed});
+    }
+    embed.addField("Hacker", `تم بنجاح ${user.tag}!`)
+        .setFooter(`Noobbot`);
     message.channel.send({embed});
     const embed1 = new Discord.RichEmbed()
         .setColor(0xFFB200)
         .setTimestamp()
-        .addField("تم تهكير جهازك يانوب")
-        .setFooter(` الهكر غير معروف`);
+        .addField("تم تهكيرك يا نوب")
+		.addField("سبب تهكيرك", `**${reason}**`)
+        .setFooter(`من ${message.author.tag}.`);
+    user.send({embed: embed1});
+}
+});
+
+
+
+client.on('message', message => {
+     if(message.content.startsWith(prefix + "hack-2")) {
+ let args = message.content.split(" ").slice(1);
+
+    var user = message.mentions.users.first();
+    var reason = args.slice(1).join(' ');
+    const embed = new Discord.RichEmbed()
+        .setColor(0xFFB200)
+        .setTimestamp();
+
+    if (!user) {
+        embed.addField("Hacker", `تبي تهكر من؟`)
+            .setFooter(`Noobbot`);
+        return message.channel.send({embed});
+    } if (!reason) {
+        embed.addField("Hacker", `اكتب سبب تهكيره`)
+        return message.channel.send({embed});
+    }
+    embed.addField("Hacker", `تم بنجاح ${user.tag}!`)
+        .setFooter(`Noobbot`);
+    message.channel.send({embed});
+    const embed1 = new Discord.RichEmbed()
+        .setColor(0xFFB200)
+        .setTimestamp()
+        .addField("تم تهكيرك يا نوب")
+		.addField("سبب تهكيرك", `**${reason}**`)
+        .setFooter(`الهكر غير معروف`);
     user.send({embed: embed1});
 }
 });
@@ -118,7 +157,8 @@ $inv | لاعطائك رابط دعوه البوت
 $emoje-text | يكبت الكلام مالتك بل يموجي
 $punch | يعطي شخص كف
 $day  | يعرض لك الوقت والتاريخ
-$hack | تهكير شخص
+$hack | لعبه هكر مع ذكر اسمك
+$hack-2 | لعبه هكر من دون ذكر اسمك
 $stim  | لصنع منبه
 $ping | بنق
 $angaz | انجاز ماينكرفتي
