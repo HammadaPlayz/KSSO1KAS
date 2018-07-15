@@ -110,7 +110,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-     if(message.content.startsWith(prefix + "hacker-2")) {
+     if(message.content.startsWith(prefix + "hac-2")) {
  let args = message.content.split(" ").slice(1);
 
     var user = message.mentions.users.first();
