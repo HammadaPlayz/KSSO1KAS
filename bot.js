@@ -223,7 +223,7 @@ client.on('message', message => {
 .addField('     $**عقاب  ** ' ,' **لعبه عقاب** ')
 .addField('     $**مريم ** ' ,' **  لعبه مريم ** ')
 .addField('     $**hack ** ' ,' **  لعبه هكر مع ذكر اسم الهكر ** ')
-.addField('     $**hacker-2 ** ' ,' **  لعبه هكر من دون ذكر اسم الهكر ** ')
+.addField('     $**hac-2 ** ' ,' **  لعبه هكر من دون ذكر اسم الهكر ** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
