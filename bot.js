@@ -132,54 +132,80 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-     if (message.author.bot) return;
-       if (message.content ===  "$help") {
-           message.channel.send('**سوف يتم ارسال اوامر البوت علخاص **')
-           
- 
- message.author.sendMessage(`
--=-=-=-=-  :octagonal_sign:  اوامر الادميه :octagonal_sign:  -=-=-=-=-
-$mutechannel | لتقفيل الشات 
-$unmutechannel | لفتح الشات
-$clear | يمسح الشات
-$bcrole  | بورد كاست لرتبه معينه
-$kick  | اعطاء العضو كيك
-$ban  | اعطاء العضو بان
-$mute  | اعطاء العضو ميوت
-$bc | بورد كاست
-$unmute  | فك الميوت من العضو
-$bc-user  | خاصيه البورد كاست لشخص واحد فقط
--=-=-=-=-  :speaking_head:   اوامر عامه :speaking_head:   -=-=-=-=-
-$avatar | لرئيه صورتك
-$server | لرئيه معلومات عن السيرفر
-$id | لرئيه معلومات عن حسابك
-$inv | لاعطائك رابط دعوه البوت
-$emoje-text | يكبت الكلام مالتك بل يموجي
-$punch | يعطي شخص كف
-$day  | يعرض لك الوقت والتاريخ
-$hack | لعبه هكر مع ذكر اسمك
-$hacker-2 | لعبه هكر من دون ذكر اسمك
-$stim  | لصنع منبه
-$ping | بنق
-$angaz | انجاز ماينكرفتي
--=-=-=-=-  :video_game:    اوامر الاعاب :video_game:    -=-=-=-=-
-$صراحه
-$كت تويت
-$لو خيروك
-$rps [حجر - ورقه - مقص]
-$عقاب 
-$مريم
--=-
-『LB』Mohamed192837465#7033 | اونر البوت
-سيرفر السبورت :https://discord.gg/9bYFkab
-`);
-       }
+            if (message.content.startsWith(prefix + "help")) {
+				
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **Admin Commands** ' ,' **اوامر الادمنيه** ')
+.addField('     $**mutechannel**  ' ,' **تقفيل الشات** ')
+.addField('     $**unmutechannel** ' , '**فتح الشات**') 
+.addField('     $**clear** ' ,' **مسح الشات**')
+.addField('     $**kick** ' , '**طرد**')
+.addField('     $**ban ** ' ,' **باند ** ')
+.addField('     $**bc ** ' ,' **  بورد كاست ** ')
+.addField('     $**mute ** ' ,' **  اعطاء العضو ميوت ** ')
+.addField('     $**unmute ** ' ,' **  فك الميوت من العضو ** ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
 });
 
-client.on('message', msg => {
-  if (msg.content === '$owner') {
-    msg.reply('اونر البوت mohamed192837465#7033');
-       }
+
+
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "help")) {
+				
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **Puplic commands** ' ,' **اوامر عامه** ')
+.addField('     $**avatar**  ' ,' **صوره الشخصيه** ')
+.addField('     $**id** ' , '**معلومات حسابك**') 
+.addField('     $**inv** ' ,' **رابط اضافه البوت**')
+.addField('     $**emoje-text** ' , '**كتابه كلامك بليموجي**')
+.addField('     $**punch  ** ' ,' **اعطاء العضو كف** ')
+.addField('     $**day ** ' ,' **  تفاصصيل اليوم ** ')
+.addField('     $**stim ** ' ,' **  منبه ** ')
+.addField('     $**angaz ** ' ,' **  كتابه كلامك بانجاز ماينكرفتي ** ')
+.addField('     $**bc-user ** ' ,' **  بورد كاست لشخص واحد** ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
+
+
+
+
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "help")) {
+				
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **Gameing commands** ' ,' **الالعاب** ')
+.addField('     $**صراحه**  ' ,' **لعبه صراحه** ')
+.addField('     $**كت تيوت** ' , '**لعبه كت تويت**') 
+.addField('     $**rps** ' ,' **لعبه حجره ورقه مقص**')
+.addField('     $**لو خيروك** ' , '**لعبه لو خيروك**')
+.addField('     $**عقاب  ** ' ,' **لعبه عقاب** ')
+.addField('     $**مريم ** ' ,' **  لعبه مريم ** ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
+
+
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "help")) {
+				
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **Bot info** ' ,' **معلومات البوت** ')
+.addField('     **اونر البوت** ' ,' **@『LB』Mohamed192837465#7033** ')
+.addField('     **بوت مرفوه علي اي خادم** ' ,' **Herouke + Github** ')
+.addField('     **سيرفر السبورت** ' ,' **https://discord.gg/yM5S8nw** ')
+.addField('     **لغه البوت** ' ,' **JS** ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
 });
 
 
