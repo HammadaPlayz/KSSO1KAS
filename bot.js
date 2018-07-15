@@ -38,7 +38,41 @@ client.login(process.env.BOT_TOKEN);
 
  
 
-
+client.on('message', message => {   
+if (message.author.boss) return;
+var prefix = "$";
+if (!message.content.startsWith(prefix)) return;
+let command = message.content.split(" ")[0];
+command = command.slice(prefix.length);
+let args = message.content.split(" ").slice(1);
+if (command == "warn") {
+if (!message.channel.guild) return;
+if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
+let user = message.mentions.users.first();
+if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
+let reason = message.content.split(" ").slice(2).join(" ");
+const muteembed = new Discord.RichEmbed()
+.setColor("RANDOM")
+.setAuthor(`Warned!`, user.displayAvatarURL)
+.setThumbnail(user.displayAvatarURL)
+.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
+.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
+.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
+.addField("User", user, true)  
+message.channel.send({embed : muteembed});
+var muteembeddm = new Discord.RichEmbed()
+.setAuthor(`Warned!`, user.displayAvatarURL)
+.setDescription(`
+${user} تم تحذيرك
+ ${message.author.tag} تمت معاقبتك بواسطة
+[ ${reason} ] : السبب
+اذا كانت العقوبة عن طريق الخطأ تكلم مع المسؤلين 
+`)
+.setFooter(`في سيرفر : ${message.guild.name}`)
+.setColor("RANDOM")
+ user.send( muteembeddm);
+ }
 
 
 client.on('message', message => {
@@ -187,6 +221,8 @@ client.on('message', message => {
 .addField('     $**لو خيروك** ' , '**لعبه لو خيروك**')
 .addField('     $**عقاب  ** ' ,' **لعبه عقاب** ')
 .addField('     $**مريم ** ' ,' **  لعبه مريم ** ')
+.addField('     $**hack ** ' ,' **  لعبه هكر مع ذكر اسم الهكر ** ')
+.addField('     $**hacker-2 ** ' ,' **  لعبه هكر من دون ذكر اسم الهكر ** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -263,7 +299,41 @@ message.channel.send(image)
  
 
 
-
+client.on('message', message => {   
+if (message.author.boss) return;
+var prefix = "$";
+if (!message.content.startsWith(prefix)) return;
+let command = message.content.split(" ")[0];
+command = command.slice(prefix.length);
+let args = message.content.split(" ").slice(1);
+if (command == "warn") {
+if (!message.channel.guild) return;
+if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
+let user = message.mentions.users.first();
+if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
+let reason = message.content.split(" ").slice(2).join(" ");
+const muteembed = new Discord.RichEmbed()
+.setColor("RANDOM")
+.setAuthor(`Warned!`, user.displayAvatarURL)
+.setThumbnail(user.displayAvatarURL)
+.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
+.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
+.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
+.addField("User", user, true)  
+message.channel.send({embed : muteembed});
+var muteembeddm = new Discord.RichEmbed()
+.setAuthor(`Warned!`, user.displayAvatarURL)
+.setDescription(`
+${user} تم تحذيرك
+ ${message.author.tag} تمت معاقبتك بواسطة
+[ ${reason} ] : السبب
+`)
+.setFooter(`في سيرفر : ${message.guild.name}`)
+.setColor("RANDOM")
+ user.send( muteembeddm);
+ }
+});
 
 
 
