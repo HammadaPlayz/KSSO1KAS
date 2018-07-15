@@ -72,7 +72,8 @@ ${user} تم تحذيرك
 .setFooter(`في سيرفر : ${message.guild.name}`)
 .setColor("RANDOM")
  user.send( muteembeddm);
- }
+}
+});
 
 
 client.on('message', message => {
