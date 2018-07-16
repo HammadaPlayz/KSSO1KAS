@@ -31,62 +31,14 @@ client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twit
 client.login(process.env.BOT_TOKEN);
 
 
-client.on('message' , async (message) => {
-       if(message.content.startsWith(`Noobbot`)) {
-              
- let responses = [
-        'جرب $help ممكن يساعدك',
-        'هلا ولله وش فيك تمنشني؟ ',
-        'حد ناداني؟',
-    ]
-    
-    // Fetch a random item from the array
-    let fetched = responses[Math.floor(Math.random() * responses.length)];
-   message.reply(fetched)
-       }
-  
-});
 
-
-client.login(process.env.BOT_TOKEN);
-
-
-client.on('message' , async (message) => {
-       if(message.content.startsWith(`NoobBot`)) {
-              
- let responses = [
-        'جرب $help ممكن يساعدك',
-        'هلا ولله وش فيك تمنشني؟ ',
-        'حد ناداني؟',
-    ]
-    
-    // Fetch a random item from the array
-    let fetched = responses[Math.floor(Math.random() * responses.length)];
-   message.reply(fetched)
-       }
-  
-});
 
 
 
 client.login(process.env.BOT_TOKEN);
 
 
-client.on('message' , async (message) => {
-       if(message.content.startsWith(`noobbot`)) {
-              
- let responses = [
-        'جرب $help ممكن يساعدك',
-        'هلا ولله وش فيك تمنشني؟ ',
-        'حد ناداني؟',
-    ]
-    
-    // Fetch a random item from the array
-    let fetched = responses[Math.floor(Math.random() * responses.length)];
-   message.reply(fetched)
-       }
-  
-});
+
 
  
 
