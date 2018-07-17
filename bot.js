@@ -1,69 +1,17 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const prefix = '$'
-
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twitch.tv/Mohamed192837465")
-  console.log('')
-  console.log('')
-  console.log('╔[═════════════════════════════════════════════════════════════════]╗')
-  console.log(`[Start] ${new Date()}`);
-  console.log('╚[═════════════════════════════════════════════════════════════════]╝')
-  console.log('')
-  console.log('╔[════════════════════════════════════]╗');
-  console.log(`Logged in as * [ " ${client.user.username} " ]`);
-  console.log('')
-  console.log('Informations :')
-  console.log('')
-  console.log(`servers! [ " ${client.guilds.size} " ]`);
-  console.log(`Users! [ " ${client.users.size} " ]`);
-  console.log(`channels! [ " ${client.channels.size} " ]`);
-  console.log('╚[════════════════════════════════════]╝')
-  console.log('')
-  console.log('╔[════════════]╗')
-  console.log(' Bot Is Online')
-  console.log('╚[════════════]╝')
-  console.log('')
-  console.log('')
-});
-
-client.login(process.env.BOT_TOKEN);
-
-
-
-
 client.on('message', message => {
   
-    if(message.content.split(' ')[0] == prefix + 'ownerbot'){
+    if(message.content.split(' ')[0] == prefix + 'botowner'){
          if(message.channel.guild) return;
                             let args = message.content.split(' ').slice(1).join(' ');
-                            guild.find.channel('468897198654881792')
-                            meesage.send.channel('$args')
+    
+                                                   client.guilds.get("462238784818249748").members.get("452292328569307137").sendMessage(message.author.tag+"\n Message : "+args)
+                                                   message.author.sendMessage("Done! ✅ ")
+                                                   //CopyRight Memo-Codes
+                                                 
     }
     });
 
-        client.on('message', function(message) {
-    if (!message.member.hasPermissions(['ADMINISTRATOR'])){
-            let command = message.content.split(" ")[0];
-        if(message.content.includes('discord.gg')){// gg شيل المسافه الي بين النقطق وال
-        if(!message.channel.guild) return;
-        message.delete()
-           if(!message.channel.guild) return message.reply('** This command only for servers**');
-     message.member.addRole(message.guild.roles.find('name', 'Muted'));
-    const embed500 = new Discord.RichEmbed()
-      .setTitle(" - كاشف النشر")
-            .addField(`**  تم اعطائك ميوت **` , `**Resoan : نشر سيرفرات **`)
-            .setColor("c91616")
-            .setThumbnail(`${message.author.avatarURL}`)
-            .setAuthor(message.author.username, message.author.avatarURL)
-        .setFooter(`${message.guild.name} `)
-     message.channel.send(embed500)
-   
-       
-    }
-    }
-})
+
 
 
 
@@ -1774,74 +1722,4 @@ let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
 let BcList = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
 .setAuthor(`محتوى الرساله ${args}`)
-.setDescription(`برودكاست بـ امبد 📝\nبرودكاست بدون امبد✏ \nلديك دقيقه للأختيار قبل الغاء البرودكاست`)
-if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(BcList).then(msg => {
-msg.react('📝')
-.then(() => msg.react('✏'))
-.then(() =>msg.react('📝'))
-
-let EmbedBcFilter = (reaction, user) => reaction.emoji.name === '📝' && user.id === message.author.id;
-let NormalBcFilter = (reaction, user) => reaction.emoji.name === '✏' && user.id === message.author.id;
-
-let EmbedBc = msg.createReactionCollector(EmbedBcFilter, { time: 60000 });
-let NormalBc = msg.createReactionCollector(NormalBcFilter, { time: 60000 });
-
-EmbedBc.on("collect", r => {
-message.channel.send(`☑ تم ارسال الرساله بنجاح`).then(m => m.delete(5000));
-message.guild.members.forEach(m => {
-var bc = new
-Discord.RichEmbed()
-.setColor('RANDOM')
-.setDescription(`Message : ${args}`)
-.setAuthor(`Server : ${message.guild.name}`)
-.setFooter(`Sender : ${message.author.username}`)
-.setThumbnail(message.author.avatarURL)
-m.send({ embed: bc })
-msg.delete();
-})
-})
-NormalBc.on("collect", r => {
-  message.channel.send(`☑ تم ارسال الرساله بنجاح`).then(m => m.delete(5000));
-message.guild.members.forEach(m => {
-m.send(args);
-msg.delete();
-})
-})
-})
-}
-});
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-
-
-
-
-
+.setDescription(`برودك
