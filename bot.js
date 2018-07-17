@@ -38,11 +38,8 @@ client.on('message', message => {
     if(message.content.split(' ')[0] == prefix + 'ownerbot'){
          if(message.channel.guild) return;
                             let args = message.content.split(' ').slice(1).join(' ');
-    
-                                                   client.guilds.get("462238784818249748").members.get("452292328569307137").sendMessage(message.author.tag+"\n Message : "+args)
-                                                   message.author.sendMessage("Done! ✅ ")
-                                                   //CopyRight Memo-Codes
-                                                 
+                            guild.find.channel('468897198654881792')
+                            meesage.send.channel('$args')
     }
     });
 
