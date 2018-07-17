@@ -185,12 +185,12 @@ client.on('message', message => {
 .addField('     $**avatar**  ' ,' **صوره الشخصيه** ')
 .addField('     $**id** ' , '**معلومات حسابك**') 
 .addField('     $**inv** ' ,' **رابط اضافه البوت**')
-.addField('     $**emoje-text** ' , '**كتابه كلامك بليموجي**')
 .addField('     $**punch**   ' ,' **اعطاء العضو كف** ')
 .addField('     $**day** ' ,' **  تفاصصيل اليوم ** ')
 .addField('     $**stim**  ' ,' **  منبه ** ')
 .addField('     $**angaz**  ' ,' **  كتابه كلامك بانجاز ماينكرفتي ** ')
-.addField('     $**bc-user**  ' ,' **  بورد كاست لشخص واحد** ')
+.addField('     $**user-bc**  ' ,' **  بورد كاست لشخص واحد** ')
+.addField('     $**member**  ' ,' **  رئيه حالات الاعضاء** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -204,7 +204,7 @@ client.on('message', message => {
 				
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('     **Gameing commands** ' ,' **الالعاب** ')
+.addField('     **Gaming commands** ' ,' **الالعاب** ')
 .addField('     $**صراحه**  ' ,' **لعبه صراحه** ')
 .addField('     $**كت تيوت** ' , '**لعبه كت تويت**') 
 .addField('     $**rps** ' ,' **لعبه حجره ورقه مقص**')
@@ -295,7 +295,7 @@ message.channel.send(image)
 
 
 client.on('message', message => {
-     if(message.content.startsWith(prefix + "bc-user")) {
+     if(message.content.startsWith(prefix + "user-bc")) {
  let args = message.content.split(" ").slice(1);
 
     var user = message.mentions.users.first();
@@ -1750,65 +1750,7 @@ client.on('message', function(msg) {
   
   
   
-  const codes = {
-    ' ': '   ',
-    '0': '0⃣',
-    '1': '1⃣',
-    '2': '2⃣',
-    '3': '3⃣',
-    '4': '4⃣',
-    '5': '5⃣',
-    '6': '6⃣',
-    '7': '7⃣',
-    '8': '8⃣',
-    '9': '9⃣',
-    '!': '❕',
-    '?': '❔',
-    '#': '#⃣',
-    '*': '*⃣'
-  };
-  
-  'abcdefghijklmnopqrstuvwxyz'.split('').forEach(c => {
-    codes[c] = codes[c.toUpperCase()] = ` :regional_indicator_${c}:`;
-  });
-  
-  
-  client.on('message' , async message => {
-         if(message.content.startsWith(prefix + "emoje-text")) {
-            let args = message.content.split(" ").slice(1);
-    if (args.length < 1) {
-      message.channel.send('يجب كتابه كلمه');
-  }
-  
-  message.channel.send(
-      args.join(' ')
-          .split('')
-          .map(c => codes[c] || c)
-          .join('')
-  );
-  };
-  });
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+ 
 
 	
 	
