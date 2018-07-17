@@ -229,6 +229,7 @@ client.on('message', message => {
 .addField('     **بوت مرفوه علي اي خادم** ' ,' **Herouke + Github** ')
 .addField('     **سيرفر السبورت** ' ,' **https://discord.gg/yM5S8nw** ')
 .addField('     **لغه البوت** ' ,' **JS** ')
+.addField('     **رابط البوت** ' ,' **https://discordapp.com/oauth2/authorize?client_id=460491129062948874&permissions=2080374975&scope=bot** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
