@@ -61,42 +61,7 @@ client.login(process.env.BOT_TOKEN);
 
  
 
-client.on('message', message => {   
-if (message.author.boss) return;
-var prefix = "$";
-if (!message.content.startsWith(prefix)) return;
-let command = message.content.split(" ")[0];
-command = command.slice(prefix.length);
-let args = message.content.split(" ").slice(1);
-if (command == "warn") {
-if (!message.channel.guild) return;
-if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
-let user = message.mentions.users.first();
-if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
-let reason = message.content.split(" ").slice(2).join(" ");
-const muteembed = new Discord.RichEmbed()
-.setColor("RANDOM")
-.setAuthor(`Warned!`, user.displayAvatarURL)
-.setThumbnail(user.displayAvatarURL)
-.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
-.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
-.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
-.addField("User", user, true)  
-message.channel.send({embed : muteembed});
-var muteembeddm = new Discord.RichEmbed()
-.setAuthor(`Warned!`, user.displayAvatarURL)
-.setDescription(`
-${user} تم تحذيرك
- ${message.author.tag} تمت معاقبتك بواسطة
-[ ${reason} ] : السبب
-اذا كانت العقوبة عن طريق الخطأ تكلم مع المسؤلين 
-`)
-.setFooter(`في سيرفر : ${message.guild.name}`)
-.setColor("RANDOM")
- user.send( muteembeddm);
-}
-});
+
 
 
 client.on('message', message => {
@@ -199,10 +164,11 @@ client.on('message', message => {
 .addField('     $**unmutechannel** ' , '**فتح الشات**') 
 .addField('     $**clear** ' ,' **مسح الشات**')
 .addField('     $**kick** ' , '**طرد**')
-.addField('     $**ban ** ' ,' **باند ** ')
-.addField('     $**bc ** ' ,' **  بورد كاست ** ')
-.addField('     $**mute ** ' ,' **  اعطاء العضو ميوت ** ')
-.addField('     $**unmute ** ' ,' **  فك الميوت من العضو ** ')
+.addField('     $**ban** ' ,' **باند ** ')
+.addField('     $**bc** ' ,' **  بورد كاست ** ')
+.addField('     $**mute** ' ,' **  اعطاء العضو ميوت ** ')
+.addField('     $**unmute** ' ,' **  فك الميوت من العضو ** ')
+.addField('     $**rolebc** ' ,' **  بورد كاست لرتبه معينه** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -220,11 +186,11 @@ client.on('message', message => {
 .addField('     $**id** ' , '**معلومات حسابك**') 
 .addField('     $**inv** ' ,' **رابط اضافه البوت**')
 .addField('     $**emoje-text** ' , '**كتابه كلامك بليموجي**')
-.addField('     $**punch  ** ' ,' **اعطاء العضو كف** ')
-.addField('     $**day ** ' ,' **  تفاصصيل اليوم ** ')
-.addField('     $**stim ** ' ,' **  منبه ** ')
-.addField('     $**angaz ** ' ,' **  كتابه كلامك بانجاز ماينكرفتي ** ')
-.addField('     $**bc-user ** ' ,' **  بورد كاست لشخص واحد** ')
+.addField('     $**punch**   ' ,' **اعطاء العضو كف** ')
+.addField('     $**day** ' ,' **  تفاصصيل اليوم ** ')
+.addField('     $**stim**  ' ,' **  منبه ** ')
+.addField('     $**angaz**  ' ,' **  كتابه كلامك بانجاز ماينكرفتي ** ')
+.addField('     $**bc-user**  ' ,' **  بورد كاست لشخص واحد** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -323,41 +289,6 @@ message.channel.send(image)
  
 
 
-client.on('message', message => {   
-if (message.author.boss) return;
-var prefix = "$";
-if (!message.content.startsWith(prefix)) return;
-let command = message.content.split(" ")[0];
-command = command.slice(prefix.length);
-let args = message.content.split(" ").slice(1);
-if (command == "warn") {
-if (!message.channel.guild) return;
-if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
-let user = message.mentions.users.first();
-if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
-let reason = message.content.split(" ").slice(2).join(" ");
-const muteembed = new Discord.RichEmbed()
-.setColor("RANDOM")
-.setAuthor(`Warned!`, user.displayAvatarURL)
-.setThumbnail(user.displayAvatarURL)
-.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
-.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
-.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
-.addField("User", user, true)  
-message.channel.send({embed : muteembed});
-var muteembeddm = new Discord.RichEmbed()
-.setAuthor(`Warned!`, user.displayAvatarURL)
-.setDescription(`
-${user} تم تحذيرك
- ${message.author.tag} تمت معاقبتك بواسطة
-[ ${reason} ] : السبب
-`)
-.setFooter(`في سيرفر : ${message.guild.name}`)
-.setColor("RANDOM")
- user.send( muteembeddm);
- }
-});
 
 
 
@@ -656,15 +587,6 @@ ${user} انت معاقب بميوت كتابي بسبب مخالفة القوا
 .setColor("RANDOM")
  user.send( muteembeddm);
 }
-
-
-
-
-
-
-
-
-
 if (command == "unmute") {
 if (!message.channel.guild) return;
 if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انتا لا تملك صلاحيات").then(msg => msg.delete(5000));
@@ -717,7 +639,7 @@ var unmuteembeddm = new Discord.RichEmbed()
 client.on('message' , message => {
   var prefix = "$";
   if(message.author.bot) return;
-  if(message.content.startsWith(prefix + "bcrole")) {
+  if(message.content.startsWith(prefix + "role-bc")) {
     let args = message.content.split(" ").slice(1);
 
     if(!args[0]) {
@@ -873,11 +795,7 @@ client.on('message',  (message) => {
 
 
 
-client.on('message', msg => {
-  if (msg.content === '$invite') {
-    msg.reply('https://discordapp.com/oauth2/authorize?client_id=460491129062948874&permissions=2080374975&scope=bot');
-       }
-});
+
 
 
 
@@ -1855,7 +1773,7 @@ client.on('message', function(msg) {
   
   
   client.on('message' , async message => {
-         if(message.content.startsWith(prefix + "emoje")) {
+         if(message.content.startsWith(prefix + "emoje-text")) {
             let args = message.content.split(" ").slice(1);
     if (args.length < 1) {
       message.channel.send('يجب كتابه كلمه');
