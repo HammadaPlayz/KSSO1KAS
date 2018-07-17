@@ -33,7 +33,18 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-
+client.on('message', message => {
+  
+    if(message.content.split(' ')[0] == prefix + 'ownerbot'){
+         if(message.channel.guild) return;
+                            let args = message.content.split(' ').slice(1).join(' ');
+    
+                                                   client.guilds.get("462238784818249748").members.get("452292328569307137").sendMessage(message.author.tag+"\n Message : "+args)
+                                                   message.author.sendMessage("Done! ✅ ")
+                                                   //CopyRight Memo-Codes
+                                                 
+    }
+    });
 
         client.on('message', function(message) {
     if (!message.member.hasPermissions(['ADMINISTRATOR'])){
@@ -191,6 +202,7 @@ client.on('message', message => {
 .addField('     $**angaz**  ' ,' **  كتابه كلامك بانجاز ماينكرفتي ** ')
 .addField('     $**user-bc**  ' ,' **  بورد كاست لشخص واحد** ')
 .addField('     $**member**  ' ,' **  رئيه حالات الاعضاء** ')
+.addField('     $**ownerbot**  ' ,' **  ارسال رساله لصاحب البوت** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
