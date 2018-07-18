@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help ${client.guilds.size} Severs `,"http://twitch.tv/S-F")
+client.user.setGame(`$help | $inv | ${client.guilds.size} Severs `,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -279,7 +279,7 @@ client.on("message", async message => {
             ]
             const randomizer = Math.floor(Math.random()*ids.length);
             const args = message.content.split(" ").slice(1).join(" ")
-    if (!args) return message.channel.send("**اكتب محتوي الانجاز**");
+    if (!args) return message.channel.send("**اكتب وش تبي يكون بلانجاز**");
     const image = new Discord.Attachment(`https://www.minecraftskinstealer.com/achievement/a.php?i=${ids[randomizer]}&h=Achievement Get!&t=${args}`, "achievement.png");
 message.channel.send(image)
 	}
@@ -310,7 +310,7 @@ client.on('message', message => {
         return message.channel.send({embed});
     }
     embed.addField("NoobBot", `تم بنجاح${user.tag}!`)
-        .setFooter(`Noob Bot :>`);
+        .setFooter(`Noob Bot `);
     message.channel.send({embed});
     const embed1 = new Discord.RichEmbed()
         .setColor(0xFFB200)
@@ -366,9 +366,9 @@ client.on('message', message => {
 💚 online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
 ❤  dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
 💛  idle:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
-💛  offline:     ${message.guild.members.filter(m=>m.presence.status == 'offline').size}
-💠   membersCount:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
-💡 bots: ${message.guild.members.filter(m=>m.user.bot).size} **`)
+💛  الاوفلاين:     ${message.guild.members.filter(m=>m.presence.status == 'offline').size}
+💠   عدد الاعضاء:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
+💡 البوتات: ${message.guild.members.filter(m=>m.user.bot).size} **`)
          message.channel.send({embed});
 
     }
@@ -417,9 +417,9 @@ client.on('message', message => {
   .setAuthor(`BANNED!`, user.displayAvatarURL)
   .setColor("RANDOM")
   .setTimestamp()
-  .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
-  .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
-  .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
+  .addField("**المستخدم**",  '**[ ' + `${user.tag}` + ' ]**')
+  .addField("**من قبل**", '**[ ' + `${message.author.tag}` + ' ]**')
+  .addField("**السبب**", '**[ ' + `${reason}` + ' ]**')
   message.channel.send({
     embed : banembed
   })
@@ -455,8 +455,8 @@ client.on('message', message => {
   if (command == "kick") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
          
-  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS ` Permission**");
-  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**I Don't Have ` KICK_MEMBERS ` Permission**");
+  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**انت لا تملك صلاحيات**");
+  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**انا لا املك صلاحيات**");
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
   /*let b5bzlog = client.channels.find("name", "5bz-log");
@@ -472,9 +472,9 @@ client.on('message', message => {
   .setAuthor(`Kicked!`, user.displayAvatarURL)
   .setColor("RANDOM")
   .setTimestamp()
-  .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
-  .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
-  .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
+  .addField("**المستخدم**",  '**[ ' + `${user.tag}` + ' ]**')
+  .addField("**من قبل**", '**[ ' + `${message.author.tag}` + ' ]**')
+  .addField("**السبب**", '**[ ' + `${reason}` + ' ]**')
   message.channel.send({
     embed : banembed
   })
@@ -763,7 +763,7 @@ client.on('message',  (message) => {
 
   message.channel.send({
     embed: {
-      description: `${message.author.username} عطاك كففف ${user.username}! 👊`,
+      description: `${message.author.username} عطاك كف  ${user.username}! 👊`,
       image: {
         url: punches[Math.floor(Math.random() * punches.length)]
       }
@@ -821,7 +821,7 @@ client.on("message", message => {
     message.channel.sendMessage("", {embed: {
       title: "Done | تــم",
       color: 0x06DF00,
-      description: "تم مسح الرسائل بنجاح",
+      description: "تم مسح الرسايل بنجاح :white_check_mark: ",
       footer: {
         text: "NoobBot"
       }
@@ -859,7 +859,7 @@ client.on('message', message => {
 
     if (message.content === "$mutechannel") {
                         if(!message.channel.guild) return message.reply(' This command only for servers');
-
+  if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**انا لا املك صلاحيات**");
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
            message.channel.overwritePermissions(message.guild.id, {
          SEND_MESSAGES: false
@@ -871,7 +871,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' لي
 //Mohamed192837465
 if (message.content === "$unmutechannel") {
     if(!message.channel.guild) return message.reply(' This command only for servers');
-
+  if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**انا لا املك صلاحيات**");
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
            message.channel.overwritePermissions(message.guild.id, {
          SEND_MESSAGES: true
