@@ -795,76 +795,12 @@ client.on('message',  (message) => {
 
 
 
-client.on("message", message => {
-  var prefix = "$";
-
-          var args = message.content.substring(prefix.length).split(" ");
-          if (message.content.startsWith(prefix + "clear")) {
- if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');    
-    message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-    }}).then(msg => {msg.delete(3000)});
-                        }
-
-   
-});
-
-
-
-client.on("message", message => {
-  var prefix = "$";
-
-          var args = message.content.substring(prefix.length).split(" ");
-          if (message.content.startsWith(prefix + "clear")) {
- if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');    
-    message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-    }}).then(msg => {msg.delete(3000)});
-                        }
-
-   
-});
 
 
 
 
-client.on("message", message => {
-  var prefix = "$";
-
-          var args = message.content.substring(prefix.length).split(" ");
-          if (message.content.startsWith(prefix + "clear")) {
- if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');    
-    message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-    }}).then(msg => {msg.delete(3000)});
-                        }
-
-   
-});
 
 
-client.on("message", message => {
-  var prefix = "$";
-
-          var args = message.content.substring(prefix.length).split(" ");
-          if (message.content.startsWith(prefix + "clear")) {
- if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');    
-    message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-    }}).then(msg => {msg.delete(3000)});
-                        }
-
-   
-});
-
-client.on("message", message => {
-  var prefix = "$";
-
-          var args = message.content.substring(prefix.length).split(" ");
-          if (message.content.startsWith(prefix + "clear")) {
- if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');    
-    message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-    }}).then(msg => {msg.delete(3000)});
-                        }
-
-   
-});
 
 
 
