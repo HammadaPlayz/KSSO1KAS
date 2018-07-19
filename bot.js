@@ -38,18 +38,6 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-client.on('message', message => {
-  
-    if(message.content.split(' ')[0] == prefix + 'botowner'){
-         if(message.channel.guild) return;
-                            let args = message.content.split(' ').slice(1).join(' ');
-    
-                                                   client.guilds.get("462238784818249748").members.get("452292328569307137").sendMessage(message.author.tag+"\n Message : "+args)
-                                                   message.author.sendMessage("Done! ✅ ")
-                                                   //CopyRight Memo-Codes
-                                                 
-    }
-    });
 
 
 
@@ -186,7 +174,6 @@ client.on('message', message => {
 .addField('     $**angaz**  ' ,' **  كتابه كلامك بانجاز ماينكرفتي ** ')
 .addField('     $**user-bc**  ' ,' **  بورد كاست لشخص واحد** ')
 .addField('     $**member**  ' ,' **  رئيه حالات الاعضاء** ')
-.addField('     $**ownerbot**  ' ,' **  ارسال رساله لصاحب البوت** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -221,7 +208,7 @@ client.on('message', message => {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
 .addField('     **Bot info** ' ,' **معلومات البوت** ')
-.addField('     **اونر البوت** ' ,' **@『LB』Mohamed192837465#7033** ')
+.addField('     **مطورين البوت ** ' ,' **@『LB』Mohamed192837465#7033 و @! 『LB』  l̷e̷g̷e̷n̷d̷ ᵈᵉᵛ || 🌙#7418** ')
 .addField('     **بوت مرفوه علي اي خادم** ' ,' **Herouke + Github** ')
 .addField('     **سيرفر السبورت** ' ,' **https://discord.gg/yM5S8nw** ')
 .addField('     **لغه البوت** ' ,' **JS** ')
