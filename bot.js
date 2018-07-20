@@ -4,7 +4,6 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | $inv | ${client.guilds.size} Severs `,"http://twitch.tv/Mohamed192837465")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -32,6 +31,62 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+
+
+client.on('ready', function(){
+    var ms = 10000 ;
+    var setGame = [' $help | $inv ${client.guilds.size}Servers ','$help | $inv ${client.users.size}Servers  | New Games فكك + عواصم','$help | $inv  ','$help | inv','$help | $inv'];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`http://www.twitch.tv/Noobbot`);
+    }, ms);
+
+});
+
+
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
+  };
+if (message.content.startsWith(prefix + 'عواصم')) { 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+const type = require('./3wasem/3wasem.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**اديك 15 ثانيه لتوجد العاصمه الصحيحه**').then(msg => {
+    let embed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setFooter("عواصم  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setDescription(`**اكتب عاصمه: ${item.type}**`)
+
+    msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
+
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            console.log(`[Typing] ماحد فكك الكلمه `);
+          })
+        })
+    })
+}
+});
 
     const fs = require('fs')
 let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
@@ -264,6 +319,8 @@ client.on('message', message => {
 .addField('     $**عقاب  ** ' ,' **لعبه عقاب** ')
 .addField('     $**مريم ** ' ,' **  لعبه مريم ** ')
 .addField('     $**marry** ' ,' **لعبه الزواج** ')
+.addField('     $**لعبه عواصم ** ' ,' ** عواصم ** ')
+.addField('     $**لعبه فكك ** ' ,' ** فكك ** ')
 .addField('     $**hack ** ' ,' **  لعبه هكر مع ذكر اسم الهكر ** ')
 .addField('     $**hac-2 ** ' ,' **  لعبه هكر من دون ذكر اسم الهكر ** ')
 .setColor('#7d2dbe')
