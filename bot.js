@@ -37,7 +37,7 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('message', message => {
     if(message.channel.type === "dm") return;
-      if(message.content.startsWith ("-^زواج")) {
+      if(message.content.startsWith ("$marry")) {
       if(!message.channel.guild) return message.reply(' This command only for servers ')
       var proposed = message.mentions.members.first()
 
