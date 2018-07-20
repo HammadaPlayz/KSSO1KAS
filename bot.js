@@ -36,7 +36,6 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-var prefix ="$"
 
 client.on("message", message => {
 	var args = message.content.split(' ').slice(1); 
