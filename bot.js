@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | $inv | ${client.guilds.size} Severs `,"http://twitch.tv/S-F")
+client.user.setGame(`$help | $inv | ${client.guilds.size} Severs `,"http://twitch.tv/Mohamed192837465")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -43,8 +43,8 @@ client.on('message', message => {
 
       if(!message.mentions.members.first()) return message.reply('لازم تطلب ايد وحدة').catch(console.error);
       if(message.mentions.users.size > 1) return message.reply('ولد ما يصحلك الا حرمة وحدة كل مرة').catch(console.error);
-       if(proposed === message.author) return message.reply(**خنثى ؟ **);
-        if(proposed === client.user) return message.reply(** تبي تتزوجني؟ **);
+       if(proposed === message.author) return message.reply('خنثى ؟ ');
+        if(proposed === client.user) return message.reply(' تبي تتزوجني؟ ');
               message.channel.send(**${proposed} 
  بدك تقبلي عرض الزواج من ${message.author}
  العرض لمدة 10 ثانية 
