@@ -121,6 +121,7 @@ if (message.content.startsWith(prefix + 'فكك')) {
 
 const type = require('./fakk/fakk.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
+const answer = item.answer 
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
 };
