@@ -247,88 +247,94 @@ client.on('message', message => {
 
 
 
-client.on('message', message => {
-            if (message.content.startsWith(prefix + "help")) {
-				
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('     **Admin Commands** ' ,' **اوامر الادمنيه** ')
-.addField('     $**mutechannel**  ' ,' **تقفيل الشات** ')
-.addField('     $**unmutechannel** ' , '**فتح الشات**') 
-.addField('     $**clear** ' ,' **مسح الشات**')
-.addField('     $**kick** ' , '**طرد**')
-.addField('     $**ban** ' ,' **باند ** ')
-.addField('     $**mute** ' ,' **  اعطاء العضو ميوت ** ')
-.addField('     $**unmute** ' ,' **  فك الميوت من العضو ** ')
-.addField('     $**rolebc** ' ,' **  بورد كاست لرتبه معينه** ')
-.setColor('#7d2dbe')
-  message.channel.sendEmbed(embed);
-    }
-});
-
-
-
-client.on('message', message => {
-            if (message.content.startsWith(prefix + "help")) {
-				
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('     **Puplic commands** ' ,' **اوامر عامه** ')
-.addField('     $**avatar**  ' ,' **صوره الشخصيه** ')
-.addField('     $**id** ' , '**معلومات حسابك**') 
-.addField('     $**inv** ' ,' **رابط اضافه البوت**')
-.addField('     $**punch**   ' ,' **اعطاء العضو كف** ')
-.addField('     $**day** ' ,' **  تفاصصيل اليوم ** ')
-.addField('     $**stim**  ' ,' **  منبه ** ')
-.addField('     $**angaz**  ' ,' **  كتابه كلامك بانجاز ماينكرفتي ** ')
-.addField('     $**user-bc**  ' ,' **  بورد كاست لشخص واحد** ')
-.addField('     $**member**  ' ,' **  رئيه حالات الاعضاء** ')
-.setColor('#7d2dbe')
-  message.channel.sendEmbed(embed);
-    }
-});
-
-
-
-
-client.on('message', message => {
-            if (message.content.startsWith(prefix + "help")) {
-				
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('     **Gaming commands** ' ,' **الالعاب** ')
-.addField('     $**صراحه**  ' ,' **لعبه صراحه** ')
-.addField('     $**كت تيوت** ' , '**لعبه كت تويت**') 
-.addField('     $**rps** ' ,' **لعبه حجره ورقه مقص**')
-.addField('     $**لو خيروك** ' , '**لعبه لو خيروك**')
-.addField('     $**عقاب  ** ' ,' **لعبه عقاب** ')
-.addField('     $**مريم ** ' ,' **  لعبه مريم ** ')
-.addField('     $**marry** ' ,' **لعبه الزواج** ')
-.addField('     $**عواصم ** ' ,' **لعبه عواصم ** ')
-.addField('     $**فكك ** ' ,' ** لعبه فكك ** ')
-.addField('     $**hack ** ' ,' **  لعبه هكر مع ذكر اسم الهكر ** ')
-.addField('     $**hac-2 ** ' ,' **  لعبه هكر من دون ذكر اسم الهكر ** ')
-.setColor('#7d2dbe')
-  message.channel.sendEmbed(embed);
-    }
-});
-
-
-client.on('message', message => {
-            if (message.content.startsWith(prefix + "help")) {
-				
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('     **Bot info** ' ,' **معلومات البوت** ')
-.addField('     **مطورين البوت ** ' ,' **@『LB』Mohamed192837465#7033 و @! 『LB』  l̷e̷g̷e̷n̷d̷ ᵈᵉᵛ || 🌙#7418** ')
-.addField('     **بوت مرفوه علي اي خادم** ' ,' **Herouke + Github** ')
-.addField('     **سيرفر السبورت** ' ,' **https://discord.gg/yM5S8nw** ')
-.addField('     **لغه البوت** ' ,' **JS** ')
-.addField('     **رابط البوت** ' ,' **https://discordapp.com/oauth2/authorize?client_id=460491129062948874&permissions=2080374975&scope=bot** ')
-.setColor('#7d2dbe')
-  message.channel.sendEmbed(embed);
-    }
-});
+client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			  اوامر عامة
+❖$avatar | صورتك او صوره الي منشنته
+❖$server | معلومات السيرفر
+❖$id | معلومات عن حسابك
+❖$angaz | كتابه كلامك بصوره انجاز ماينكرفتي
+❖$members | حالات الاعضاء
+❖$inv | رابط اضافه البوت
+❖$day | تفاصيل اليوم
+❖$stim | منبه
+❖user-bc | رساله لشخص واحد بلخاص
+`)
+   message.author.sendEmbed(embed)
+    
+   }
+   }); 
+   
+   
+         client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			  معلومات البوت
+❖مطورين البوت |  『LB』Mohamed192837465#7033 + ! 『LB』  l̷e̷g̷e̷n̷d̷ ᵈᵉᵛ || 🌙#7418 
+❖لغه البوت | JS
+❖هل مرفوع علي خادم؟ + لاسم | اي و الاسم herouke
+❖رابط البوت | https://discordapp.com/oauth2/authorize?client_id=460491129062948874&permissions=2080374975&scope=bot
+❖سيرفر السبورت | https://discord.gg/myJNfc
+`)
+   message.author.sendEmbed(embed)
+    
+   }
+   }); 
+   
+   
+      client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			  العاب
+❖$صراحه | لعبه صراحه
+❖$كت تويت | لعبه كت تويت
+❖$punch | اعطاء كف
+❖$rps [ حجر - ورقه - مقص ] | لعبه حجر ورقه مقص
+❖$مريم | لعبه مريم
+❖$عقاب | لعبه عقاب
+❖$hack | لعبه الهكر مع ذكر اسمك للي هكرته
+❖$hac-2 | لعبه الهكر من دون ذكر اسمك للي هكرته
+❖$عواصم | لعبه عواصم
+❖$فكك | لعبه فكك
+`)
+   message.author.sendEmbed(embed)
+    
+   }
+   }); 
+   
+   
+   
+   client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help") {
+	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			  اوامر ادمنيه
+❖$ban | اعطاء العضو باند
+❖$kick | اعطاء العضو كيك
+❖$mute | اعطاء العضو ميوت
+❖$unmute | ازاله الميوت من العضو
+❖$clear| مسح الرسائل
+❖$rolebc | ارسال رساله لجميع من يملك الرتبه
+❖$mutechannel| منع الكتابه بلروم
+❖$unmutechannel | فك منع الكتابه بلروم
+`)
+   message.author.sendEmbed(embed)
+    
+   }
+   }); 
 
 
 
