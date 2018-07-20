@@ -53,7 +53,7 @@ client.on('message', message => {
 const filter = m => m.content.startsWith("موافقة");
 message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
 .then(collected =>{ 
-    message.channel.send(**${message.author} و ${proposed} الف الف مبروك الله يرزقكم الذرية الصالحة**);
+    message.channel.send(`${message.author} و ${proposed} الف الف مبروك الله يرزقكم الذرية الصالحة`);
 })
    .catch(collected => message.channel.send(**السكوت علامة الرضا نقول مبروك ؟**))
 
