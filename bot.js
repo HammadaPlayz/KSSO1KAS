@@ -45,10 +45,10 @@ client.on('message', message => {
       if(message.mentions.users.size > 1) return message.reply('ولد ما يصحلك الا حرمة وحدة كل مرة').catch(console.error);
        if(proposed === message.author) return message.reply('خنثى ؟ ');
         if(proposed === client.user) return message.reply(' تبي تتزوجني؟ ');
-              message.channel.send('${proposed} 
+              message.channel.send(`${proposed} 
  بدك تقبلي عرض الزواج من ${message.author}
  العرض لمدة 10 ثانية 
- اكتب موافقة او لا')
+ اكتب موافقة او لا`)
 
 const filter = m => m.content.startsWith("موافقة");
 message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
