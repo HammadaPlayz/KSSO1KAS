@@ -31,21 +31,6 @@ client.user.setGame(`$help | $inv ${client.guilds.size} Servers ${client.users.s
 client.login(process.env.BOT_TOKEN);
 
 
-const devs = ['452292328569307137','424313545421750274'];
-const adminprefix = "botbotbot"
-
-
-client.on('message', message => {
-      if (!devs.includes(message.author.id)) return;
-  if (message.content.startsWith(adminprefix + '$')) {
-    if (!devs.includes(message.author.id)) return; 
-let args = message.content.split(' ').slice(1).join(' ');
-
-message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
-client.users.forEach(m =>{
-m.sendMessage(args)
-})
-}});
 
 
 
