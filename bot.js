@@ -285,7 +285,6 @@ client.on('message', message => {
 	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
-      .setThumbnail('https://cdn.discordapp.com/attachments/456647239708835840/469989443772874752/AdminCommandsNoobbot.jpg')
       .setDescription(`
 			  اوامر ادمنيه
 ❖$ban | اعطاء العضو باند
@@ -360,7 +359,6 @@ client.on("message", message => {
 			  معلومات البوت
 ❖مطورين البوت |  『LB』Mohamed192837465#7033 + ! 『LB』  l̷e̷g̷e̷n̷d̷ ᵈᵉᵛ || 🌙#7418 
 ❖لغه البوت | JS
-❖هل مرفوع علي خادم؟ + لاسم | اي و الاسم herouke
 ❖رابط البوت | https://discordapp.com/oauth2/authorize?client_id=460491129062948874&permissions=2080374975&scope=bot
 ❖سيرفر السبورت | https://discord.gg/myJNfc
 `)
