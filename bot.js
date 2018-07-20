@@ -44,8 +44,7 @@ client.on('message', message => {
       if(!message.mentions.members.first()) return message.reply(`لازم تطلب ايد وحدة`).catch(console.error);
       if(message.mentions.users.size > 1) return message.reply(`ولد ما يصحلك الا حرمة وحدة كل مرة`).catch(console.error);
        if(proposed === message.author) return message.reply('**خنتني ؟ **');
-        if(proposed === client.user) return message.reply('
-		** تبي تتزوجني؟ **');
+        if(proposed === client.user) return message.reply('**تبي تتزوجني؟**')
               message.channel.send(**${proposed} 
  بدك تقبلي عرض الزواج من ${message.author}
  العرض لمدة 10 ثانية 
@@ -1780,3 +1779,4 @@ client.on('message', function(msg) {
 	
 	
 	
+pr
