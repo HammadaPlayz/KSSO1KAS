@@ -279,7 +279,27 @@ client.on('message', message => {
 
 
 
-
+   client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help") {
+	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			  اوامر ادمنيه
+❖$ban | اعطاء العضو باند
+❖$kick | اعطاء العضو كيك
+❖$mute | اعطاء العضو ميوت
+❖$unmute | ازاله الميوت من العضو
+❖$clear| مسح الرسائل
+❖$rolebc | ارسال رساله لجميع من يملك الرتبه
+❖$mutechannel| منع الكتابه بلروم
+❖$unmutechannel | فك منع الكتابه بلروم
+`)
+   message.author.sendEmbed(embed)
+    
+   }
+   }); 
 
 
 
@@ -305,6 +325,30 @@ client.on("message", message => {
    }
    }); 
    
+
+
+      client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			  العاب
+❖$صراحه | لعبه صراحه
+❖$كت تويت | لعبه كت تويت
+❖$punch | اعطاء كف
+❖$rps [ حجر - ورقه - مقص ] | لعبه حجر ورقه مقص
+❖$مريم | لعبه مريم
+❖$عقاب | لعبه عقاب
+❖$hack | لعبه الهكر مع ذكر اسمك للي هكرته
+❖$hac-2 | لعبه الهكر من دون ذكر اسمك للي هكرته
+❖$لعبه عواصم | عواصم
+❖$لعبه فكك | فكك
+`)
+   message.author.sendEmbed(embed)
+    
+   }
+   }); 
    
          client.on("message", message => {
 	var prefix = "$";
@@ -325,52 +369,11 @@ client.on("message", message => {
    }); 
    
    
-      client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help") {
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(`
-			  العاب
-❖$صراحه | لعبه صراحه
-❖$كت تويت | لعبه كت تويت
-❖$punch | اعطاء كف
-❖$rps [ حجر - ورقه - مقص ] | لعبه حجر ورقه مقص
-❖$مريم | لعبه مريم
-❖$عقاب | لعبه عقاب
-❖$hack | لعبه الهكر مع ذكر اسمك للي هكرته
-❖$hac-2 | لعبه الهكر من دون ذكر اسمك للي هكرته
-❖$عواصم | لعبه عواصم
-❖$فكك | لعبه فكك
-`)
-   message.author.sendEmbed(embed)
-    
-   }
-   }); 
+
    
    
    
-   client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help") {
-	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(`
-			  اوامر ادمنيه
-❖$ban | اعطاء العضو باند
-❖$kick | اعطاء العضو كيك
-❖$mute | اعطاء العضو ميوت
-❖$unmute | ازاله الميوت من العضو
-❖$clear| مسح الرسائل
-❖$rolebc | ارسال رساله لجميع من يملك الرتبه
-❖$mutechannel| منع الكتابه بلروم
-❖$unmutechannel | فك منع الكتابه بلروم
-`)
-   message.author.sendEmbed(embed)
-    
-   }
-   }); 
+
 
 
 
