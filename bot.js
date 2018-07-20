@@ -141,7 +141,7 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: **ماحد الاجابه والاجابه كانت ${item.answer}**`);
+            message.channel.send(`:x: **ماحد قال الاجابه الصحيحه**`);
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
