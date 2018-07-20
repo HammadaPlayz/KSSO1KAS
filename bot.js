@@ -285,7 +285,7 @@ client.on('message', message => {
 	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
-      .setThumbnail('https://cdn.discordapp.com/attachments/456647239708835840/469986580770193420/FotoJet_14.jpg')
+      .setThumbnail('https://cdn.discordapp.com/attachments/456647239708835840/469987261052616704/admincom.jpg')
       .setDescription(`
 			  اوامر ادمنيه
 ❖$ban | اعطاء العضو باند
