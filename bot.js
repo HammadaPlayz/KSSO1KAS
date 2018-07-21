@@ -731,7 +731,7 @@ client.on('message', message => {
 
   
        const fs = require('fs')
-let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
+let points = JSON.parse(fs.readFileSync('./points.json', 'utf8'));
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
     points: 50,
@@ -761,6 +761,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
           })
           .catch(collected => { 
             message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+			    fs.writeFile('./points' ,JSON.stringify(points), (err) => {
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
@@ -769,6 +770,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
 });
 
 
+let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 client.on('message', message => {
     if (!points[message.author.id]) points[message.author.id] = { 
         points: 0,
@@ -794,6 +796,7 @@ m.edit({embed: new Discord.RichEmbed().setTitle('لديك 15 ثانيه للاج
               })
               .catch(collected => { 
                 message.channel.send(`:x: **لم يقم أحد بكتابة الايموجي بالوقت المناسب**`);
+							    fs.writeFile('./points' ,JSON.stringify(points), (err) => {
                 console.log(`[Game] No one answered the correct answer`);
                     })
             })
@@ -807,7 +810,7 @@ m.edit({embed: new Discord.RichEmbed().setTitle('لديك 15 ثانيه للاج
 
 
 
-
+let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
     points: 50,
@@ -837,6 +840,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
           })
           .catch(collected => { 
             message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+						    fs.writeFile('./points' ,JSON.stringify(points), (err) => {
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
@@ -844,7 +848,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
 }
 });
 
-
+let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
     points: 50,
@@ -874,13 +878,13 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
           })
           .catch(collected => { 
             message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+						    fs.writeFile('./points' ,JSON.stringify(points), (err) => {
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
     })
 }
 });
-
 
 client.on('message',async message => {
   let messageArray = message.content.split(' ');
@@ -896,6 +900,7 @@ client.on('message',async message => {
     message.channel.send(`**:moneybag: | ${message.author.username}, has transfered ${messageArray[1]}$ to ${mention}**`)
   }
 });
+
 
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
@@ -926,6 +931,7 @@ message.channel.send('**اديك 15 ثانيه لتوجد العاصمه الص�
           })
           .catch(collected => { 
             message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+						    fs.writeFile('./points' ,JSON.stringify(points), (err) => {
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
@@ -963,6 +969,7 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
           })
           .catch(collected => { 
             message.channel.send(`:x: **ماحد قال الاجابه الصحيحه**`);
+						    fs.writeFile('./points' ,JSON.stringify(points), (err) => {
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
@@ -2199,26 +2206,7 @@ client.on('message' , async (message) => {
   
   
   
- const db = require('quick.db')
-client.on('message', async message => {
-   if(message.content.startsWith(prefix + "credits")) {
- let args = message.content.split(' ').slice(1);
 
-var user = message.mentions.users.first() || message.author;
-        
-        var balance = await db.fetch(`userBalance_${user.id}`)
-        
-        if (balance === null) balance = 50;
-        
-        var embed = new Discord.RichEmbed()
-        .setTitle('Coin Balance')
-        .setDescription(`${user.username}, **your balance:\n:dollar: $${balance}**`)
-        .setColor('#ffffff')
-        .setFooter('Requested By ' + message.author.tag, message.author.avatarURL)
-        message.channel.send(embed)
-
-}
-});
 client.on('message', async message => {
      if (message.content.startsWith("$daily")) {
     let cooldown = 8.64e+7,
@@ -2250,11 +2238,59 @@ client.on('message', async message => {
           .setFooter('Requested By ' + message.author.tag, message.author.avatarURL)
           message.channel.send(embed);
         })}
-    })} catch(err) {console.log(err)}
+    fs.writeFile('./credits' ,JSON.stringify(credits), (err) => {
+		})} catch(err) {console.log(err)}
 }
 });
 
 
+
+
+
+
+
+
+const fs = require('fs');
+let points = JSON.parse(fs.readFileSync("./credits.json", "utf8"));
+const prefix = "$";
+
+client.on("message", message => {
+  if (!message.content.startsWith(prefix)) return;
+  if (message.author.bot) return;
+
+  if (!points[message.author.id]) points[message.author.id] = {
+    points: 0,
+    level: 0
+  };
+  let userData = points[message.author.id];
+  userData.points++;
+  
+    let userData = point[message.author.id];
+  userData.point++
+  
+
+  let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));
+  if (curLevel > userData.level) {
+    // Level up!
+    userData.level = curLevel;
+     message.reply(`**لقد وصلت الى المستوى ${curLevel}**`).then(m => m.delete(100000));
+  }
+
+  if (message.content.startsWith(prefix + "level")) {
+      message.reply(` **انت في الفل ${cutLevel} ** `).then(m => m.delete(100000));
+	  
+      if (message.content.startsWith(prefix + "credits")) {
+      message.reply(` **${userData.points}** `).then(m => m.delete(100000));
+
+      if (message.content.startsWith(prefix + "points")) {    
+      message.reply(` **${userData.point}** `).then(m => m.delete(100000));
+  }
+  fs.writeFile("./credits.json", JSON.stringify(points), (err) => {
+  fs.writeFile("./points.json", JSON.stringify(point), (err) => {
+    if (err) console.error(err)
+  });
+
+});
 
 
 
