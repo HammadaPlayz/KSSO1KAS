@@ -33,6 +33,62 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+const Fortnite = require('fortnite');
+const stats = new Fortnite("42114d32-c859-4168-9a8b-6cc660e71edc");
+const Discord = require('discord.js');
+
+exports.run = (client, message, args, tools) => {
+
+        let platform;
+        let username;
+
+        if (!['pc', 'xbl', 'psn'].includes(args[0])) return message.channel.send('**Please Include the platform: `!fortnite [ pc | xbl | psn ] <username>`**');
+        if (!args[1]) return message.channel.send('**من فضلك قم بكتابه: `$fortnite [ pc | xbl | psn ] <username>`**');
+
+        platform = args.shift();
+        username = args.join(' ');
+
+        stats.getInfo(username, platform).then(data => {
+                    const embed = new Discord.MessageEmbed()
+                        .setColor(0xffffff)
+                        .setTitle(`Stats for ${data.username}`)
+                        .setDescription(`**Top Placement**\n\n**Top 3s:** *${data.lifetimeStats[0].value}*\n**Top 5s:** *${data.lifetimeStats[1].value}*\n**Top 6s:** *${data.lifetimeStats[3].value}*\n**Top 12s:** *${data.lifetimeStats[4].value}*\n**Top 25s:** *${data.lifetimeStats[5].value}*`, true)
+                        .addField('Total Score', data.lifetimeStats[6].value, true)
+                        .addField('Matches Played', data.lifetimeStats[7].value, true)
+                        .addField('Wins', data.lifetimeStats[8].value, true)
+                        .addField('Win Percentage', data.lifetimeStats[9].value, true)
+                        .addField('Kills', data.lifetimeStats[10].value, true)
+                        .addField('K/D Ratio', data.lifetimeStats[11].value, true)
+                        .addField('Kills Per Minute', data.lifetimeStats[12].value, true)
+                        .addField('Time Played', data.lifetimeStats[13].value, true)
+                        .addField('Average Survival Time', data.lifetimeStats[14].value, true)
+
+                    message.channel.send(embed)
+                        .catch(error => {
+
+                            message.channel.send('Username not found!');
+
+                        })
+
+                    }
+                )
+            }
+
+client.on("message", message => {    
+    if(!message.channel.guild) return;
+if(message.author.bot) return;
+if(message.content === "$serveravatar"){ 
+    const embed = new Discord.RichEmbed()
+
+.setTitle(`صورة ** ${message.guild.name} **`)
+.setAuthor(message.author.username, message.guild.iconrURL)
+.setColor('RANDOM')
+.setImage(message.guild.iconURL)
+
+message.channel.send({embed});
+}
+});
+
 
 const devs = ['452292328569307137','424313545421750274'];
 const adminprefix = "$$"
@@ -387,7 +443,9 @@ client.on("message", message => {
 ❖$server | معلومات السيرفر
 ❖$id | معلومات عن حسابك
 ❖$angaz | كتابه كلامك بصوره انجاز ماينكرفتي
+❖$fortnite | تفاصيل حساب فورتنايت
 ❖$members | حالات الاعضاء
+❖$serveravatar | صوره السيرفر
 ❖$inv | رابط اضافه البوت
 ❖$day | تفاصيل اليوم
 ❖$stim | منبه
