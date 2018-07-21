@@ -32,6 +32,26 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+
+client.on('message', message => {
+  if(!message.channel.guild) return;
+let args = message.content.split(' ').slice(1).join(' ');
+if (message.content.startsWith('$bc')){
+message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
+client.users.forEach(m =>{
+var bc = new
+Discord.RichEmbed()
+.setColor('RANDOM')
+.setTitle('Broadcast')
+.addField('Server', message.guild.name)
+.addField('Sender', message.author.username)
+.addField('Message', args)
+m.send({ embed: bc })
+})
+}
+});
+
+
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
     points: 50,
@@ -552,7 +572,38 @@ moment.locale('ar-TN');
 
 
 
+client.on('message', message => {
+    var prefix = "$"
+    let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
 
+  let args = message.content.split(" ").slice(1);
+
+
+if(command == "draw") {
+    var Canvas = require('canvas')
+  , Image = new Canvas.Image
+  , canvas = new Canvas(450, 170)
+  , ctx = canvas.getContext('2d');
+  ctx.font = '30px Impact';
+  let args = message.content.split(" ").slice(1);
+  
+Image.src = canvas.toBuffer();
+
+    console.log(Image);
+ctx.drawImage(Image, 0, 0, Image.width / 470, Image.height / 170);
+ctx.fillText(args.join("  "),110, 70);
+
+
+ctx.beginPath();
+ctx.lineTo(50, 102);
+ctx.stroke();
+
+message.channel.sendFile(canvas.toBuffer());
+}
+}).on('ready', () => {
+
+});
 
    client.on("message", message => {
 	var prefix = "$";
@@ -573,6 +624,7 @@ moment.locale('ar-TN');
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
 ❖$role humans [rank] | اعطاء رتبه للبشريين
 ❖$roleRemove @someone [rank] | ازاله الرتبه من شخص معين
+❖$bc | رساله جماعيه
 ❖$comeall | يجيب الكل لرومك الصوتي بس يسحب الي بلرومات الصوتيه
 ❖$unmutechannel | فك منع الكتابه بلروم
 `)
@@ -598,6 +650,7 @@ client.on("message", message => {
 ❖$serveravatar | صوره السيرفر
 ❖$inv | رابط اضافه البوت
 ❖$day | تفاصيل اليوم
+❖$draw | كتابه كلامك في صوره
 ❖$id2 | ايديك
 ❖$stim | منبه
 ❖$user-bc | رساله لشخص واحد بلخاص
