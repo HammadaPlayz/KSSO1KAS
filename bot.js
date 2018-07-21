@@ -2186,11 +2186,7 @@ client.on('message', function(msg) {
   
   
  
-
-	
-	
-	
-	client.on('message', message => {
+client.on('message', message => {
   if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
 if (message.content.startsWith('$en-bc')){
@@ -2474,7 +2470,6 @@ message.channel.send('**you have a 15 sec to say the correct answer**').then(msg
 }
 });
 
-    const fs = require('fs')
 let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
@@ -2526,13 +2521,12 @@ client.on('message', message => {
         if(proposed === client.user) return message.reply(`** are you want marry me? **`);
               message.channel.send(`**${proposed} 
 are you want accpet the marry? say ok for accpet or say no for cancel${message.author}
- العرض لمدة 10 ثانية 
- اكتب موافقة او لا**`)
+**`)
 
 const filter = m => m.content.startsWith("ok");
 message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
 .then(collected =>{ 
-    message.channel.send(`**${message.author} و ${proposed} الف الف مبروك انشاء الله تستمتعون بحياتكم الزوجية ويطول اعماركم ولا تنسون شهر العسل**`);
+    message.channel.send(`****`);
 })
    .catch(collected => message.channel.send(`****`))
 
@@ -2638,7 +2632,6 @@ client.on('message', message => {
 
 
 
-var moment = require("moment");
 client.on('message', message => {
   var prefix = '$';
   
@@ -2648,7 +2641,6 @@ client.on('message', message => {
       let member = client.guilds.get(message.guild.id).members.get(message.author.id);
       let personalInvites = invs.filter(i => i.inviter.id === message.author.id);
       let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
-      var moment = require('moment');
       var args = message.content.split(" ").slice(1);
 let user = message.mentions.users.first();
 var men = message.mentions.users.first();
@@ -2691,7 +2683,6 @@ client.on('message', message => {
 
 
 if(command == "en-draw") {
-    var Canvas = require('canvas')
   , Image = new Canvas.Image
   , canvas = new Canvas(450, 170)
   , ctx = canvas.getContext('2d');
@@ -2778,7 +2769,11 @@ client.on("message", message => {
       .setColor("#000000")
       .setDescription(`
 			  games
-Soon...
+❖$flags | Flags game 
+❖$decrypt | Decrypt Game
+❖$capitals | Capitals Game
+❖$minecraft | Minecraft Game
+Other Soon...
 `)
    message.author.sendEmbed(embed)
     
@@ -2833,7 +2828,6 @@ client.on("message", message => {
 
 
 
-const sql = require("sqlite");
 client.on("message", async message => {
     if (message.content.startsWith(prefix + "en-angaz")) {
          var ids = [
@@ -3093,7 +3087,6 @@ client.on('message', message => {
 
 
 
-const ms = require("ms");
 client.on('message' , async (message) => {
     if (message.content.startsWith(prefix + 'en-stim')) {
          let args = message.content.split(" ").slice(1);
@@ -3635,4 +3628,5 @@ client.on('message', function(msg) {
 	
 
 
-
+	
+	
