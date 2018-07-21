@@ -718,9 +718,19 @@ setTimeout(function(){
 });
 
 
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "الجديد")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **امر $draw** ' ,' **يكتب كلامك في صوره** ')
+.addField('     **امر $minecraft**  ' ,' **لعبه اسئله ماينكرفت** ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
 
   
-   
+       const fs = require('fs')
 let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
