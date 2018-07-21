@@ -721,6 +721,7 @@ setTimeout(function(){
 
   
    
+let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
     points: 50,
@@ -2209,6 +2210,7 @@ var user = message.mentions.users.first() || message.author;
 
 }
 });
+const ms = require('ms')
 client.on('message', async message => {
    if(message.content.startsWith(prefix + "daily")) {
     let cooldown = 8.64e+7,
