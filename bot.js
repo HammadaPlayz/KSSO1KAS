@@ -42,8 +42,8 @@ client.login(process.env.BOT_TOKEN);
         الاقتراح من : ${msg.member}
         الاقتراح : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
         `)
-        }
       }
+    });
 
 
 client.on('message', message => {
