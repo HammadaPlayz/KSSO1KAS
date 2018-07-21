@@ -2000,66 +2000,198 @@ client.on('message' , async (message) => {
 
 
 
-const fs = require('fs');
-let points = JSON.parse(fs.readFileSync("./credits.json", "utf8"));
-
-client.on("message", message => {
-  if (!message.content.startsWith(prefix)) return;
-  if (message.author.bot) return;
-
-  if (!points[message.author.id]) points[message.author.id] = {
-    points: 0,
-    level: 0
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
   };
-  let userData = points[message.author.id];
-  userData.points++;
-  
-    let memberData = point[message.author.id];
-  userData.point++
-  
+if (message.content.startsWith(prefix + 'اعلم')) { 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-  let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));
-  if (curLevel > userData.level) {
-    // Level up!
-    userData.level = curLevel;
-     message.reply(`**لقد وصلت الى المستوى ${curLevel}**`).then(m => m.delete(100000));
-  }
+const type = require('./a3lm/a3lm.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**لديك 15 ثانيه**').then(msg => {
+    let embed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setFooter("اعلم  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setDescription(`** ${item.type}**`)
 
-  if (message.content.startsWith(prefix + "level")) {
-      message.reply(` **انت في الفل ${cutLevel} ** `).then(m => m.delete(100000));
-	  
-      if (message.content.startsWith(prefix + "credits")) {
-      message.reply(` **${userData.points}** `).then(m => m.delete(100000));
+    msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //حقوق discord.jpei
 
-      if (message.content.startsWith(prefix + "points")) {    
-      message.reply(` **${memberData.point}** `).then(m => m.delete(100000));
-  }
-  fs.writeFile("./credits.json", JSON.stringify(points), (err) => {
-  fs.writeFile("./points.json", JSON.stringify(point), (err) => {
-    if (err) console.error(err)
-  });
-
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            console.log(`[Typing] ماحد فكك الكلمه `);
+          })
+        })
+    })
+}
 });
 
 
 
 
-
-
-const fs = require('fs');
-let points = JSON.parse(fs.readFileSync('points.json', 'utf8'));
 client.on('message', message => {
-    if (!points[message.author.id]) points[message.author.id] = {points : 0}
-    if (message.content == '$points'){
-        var embed = new RichEmbed()
-        .setAuthor(message.author.username,message.author.avatarURL)
-        .addField(`نقاطك : ${points[message.author.id].points}`,'by ra3ode',   true)
-        .setColor('RANDOM')
-        .setFooter('Noobbot', client.user.avatarURL);
-        message.channel.sendEmbed(embed)
+    if (!points[message.author.id]) points[message.author.id] = { 
+        points: 0,
+      };
+    if (message.content.startsWith(prefix + 'ايموجي')) { 
+        if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+    
+    const type = require('./emoje/emoje.json'); 
+    const item = type[Math.floor(Math.random() * type.length)]; 
+    const filter = response => { 
+        return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
     };
-    if (message.content == "$فكك") {    
-	    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+   message.channel.send({embed: new Discord.RichEmbed().setTitle('لديك ثانيه للاجابه بالجواب الصحيح').setThumbnail(`${item.type}`)}).then(function(m) {
+             setTimeout(function() {
+m.edit({embed: new Discord.RichEmbed().setTitle('لديك 15 ثانيه للاجابه بالجواب الصحيح').setThumbnail('https://images-ext-2.discordapp.net/external/lLOYcLfSQaNo_5Ex0I-gBD5lIW-FfRXO-W_-ZxSpYLA/https/i.imgur.com/iReHvIZ.png?width=100&height=100')})
+             }, 1000)
+            message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+            .then((collected) => {
+            message.channel.send(`${collected.first().author} ✅ **لقد قمت بكتابة الايموجي بالوقت المناسب**`);
+            console.log(`[Game] ${collected.first().author} Answered with the correct answer`);
+                let won = collected.first().author;
+                points[won.id].points++;
+              })
+              .catch(collected => { 
+                message.channel.send(`:x: **لم يقم أحد بكتابة الايموجي بالوقت المناسب**`);
+                console.log(`[Game] ماحد قال الاجابه`);
+                    })
+            })
+    }
+    });
+
+
+
+
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
+  };
+if (message.content.startsWith(prefix + 'رياضيات')) { 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+const type = require('./read/read.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**لديك 15 ثانيه**').then(msg => {
+    let embed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setFooter("رياضيات  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setDescription(`** ${item.type}**`)
+
+    msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
+
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            console.log(`[Typing] ماحد قال الاجابه `);
+          })
+        })
+    })
+}
+});
+
+
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
+  };
+if (message.content.startsWith(prefix + 'ماينكرفت')) { 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+const type = require('./minecraft/minecraft.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**لديك 15 ثانيه**').then(msg => {
+    let embed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setFooter("ماينكرفت  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setDescription(`** ${item.type}**`)
+
+    msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
+
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            console.log(`[Typing] ماحد قال الاجابه `);
+          })
+        })
+    })
+}
+});
+
+
+
+
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
+  };
+if (message.content.startsWith(prefix + 'عواصم')) { 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+const type = require('./3wasem/3wasem.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه الصحيحه**').then(msg => {
+    let embed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setFooter("عواصم  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setDescription(`**اكتب عاصمه: ${item.type}**`)
+
+    msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
+
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            console.log(`[Typing] ماحد قال الاجابه `);
+          })
+        })
+    })
+}
+});
+
+let points = JSON.parse(fs.readFileSync('./Points.json', 'utf8'));
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
+  };
+if (message.content.startsWith(prefix + 'فكك')) { 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
 const type = require('./fakk/fakk.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
@@ -2076,7 +2208,6 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
     msg.channel.sendEmbed(embed).then(() => {
         message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
         .then((collected) => {
-			            points[message.author.id].points +=1
         message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
 
         console.log(`[Typing] ${collected.first().author} typed the word.`);
@@ -2085,10 +2216,15 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
           })
           .catch(collected => { 
             message.channel.send(`:x: **ماحد قال الاجابه الصحيحه**`);
-						    fs.writeFile('./points' ,JSON.stringify(points), (err) => {
             console.log(`[Typing] ماحد فكك الكلمه `);
-    }
-    fs.writeFile('points.json', JSON.stringify(points), (err) => {
-        if (err) console.error(err);
-    });
-    }).
+          })
+        })
+    })
+}
+});
+
+
+
+
+
+
