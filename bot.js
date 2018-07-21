@@ -33,6 +33,19 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+
+    client.on('message', msg => { 
+      if (msg.content.startsWith(`$sug-bot`)) {
+         let args = msg.content.split(" ").slice(1);
+        if (!args[1]) return msg.reply(`يجب كتابه الاقتراح`)
+          msg.guild.channels.find('470027950901690379').send(`
+        الاقتراح من : ${msg.member}
+        الاقتراح : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
+        `)
+        }
+      }
+
+
 client.on('message', message => {
     if (!points[message.author.id]) points[message.author.id] = { 
         points: 0,
