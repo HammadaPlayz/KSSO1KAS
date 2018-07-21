@@ -33,7 +33,6 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-let points = JSON.parse(fs.readFileSync('./Points.json'));
 client.on('message', message => {
     if (!points[message.author.id]) points[message.author.id] = { 
         points: 0,
