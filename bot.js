@@ -35,7 +35,6 @@ client.login(process.env.BOT_TOKEN);
 
 const Fortnite = require('fortnite');
 const stats = new Fortnite("42114d32-c859-4168-9a8b-6cc660e71edc");
-const Discord = require('discord.js');
 
 exports.run = (client, message, args, tools) => {
 
