@@ -2002,7 +2002,6 @@ client.on('message' , async (message) => {
 
 const fs = require('fs');
 let points = JSON.parse(fs.readFileSync("./credits.json", "utf8"));
-const prefix = "$";
 
 client.on("message", message => {
   if (!message.content.startsWith(prefix)) return;
