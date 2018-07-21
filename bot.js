@@ -76,6 +76,7 @@ client.on("message", message => {
 ❖$members | حالات الاعضاء
 ❖$serveravatar | صوره السيرفر
 ❖$inv | رابط اضافه البوت
+❖$الي انضاف بلبوت اليوم | الجديد
 ❖$day | تفاصيل اليوم
 ❖$draw | كتابه كلامك في صوره
 ❖$id | ايديك
@@ -722,8 +723,7 @@ client.on('message', message => {
             if (message.content.startsWith(prefix + "الجديد")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('     **امر $draw** ' ,' **يكتب كلامك في صوره** ')
-.addField('     **امر $minecraft**  ' ,' **لعبه اسئله ماينكرفت** ')
+.addField('     **امر $الجديد** ' ,' **يعرض لك كل جديد بلبوت** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
