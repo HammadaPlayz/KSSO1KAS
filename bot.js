@@ -2209,7 +2209,6 @@ var user = message.mentions.users.first() || message.author;
 
 }
 });
-const ms = require('ms')
 client.on('message', async message => {
    if(message.content.startsWith(prefix + "daily")) {
     let cooldown = 8.64e+7,
