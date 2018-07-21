@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | $inv ${client.guilds.size} Servers ${client.users.size} Users `,"http://twitch.tv/NoobBot")
+client.user.setGame(`$help | $en-help ${client.guilds.size} Servers ${client.users.size} Users `,"http://twitch.tv/NoobBot")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
