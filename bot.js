@@ -35,7 +35,26 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-
+client.on('message' , async (message) => {
+       if(message.content.startsWith(`<@${client.user.id}>`)) {
+              
+ let responses = [
+        'احد ناداني؟',
+        'سوي $help',
+        'لا تزعجني',
+        'ايش تبي ',
+        'هلا',
+        'كيفك',
+        'سم؟',
+        'تمنشن بوت ياغبي؟'
+    ]
+    
+    // Fetch a random item from the array
+    let fetched = responses[Math.floor(Math.random() * responses.length)];
+   message.reply(fetched)
+       }
+  
+});
 
 client.on('message', message => {
     if (!points[message.author.id]) points[message.author.id] = { 
