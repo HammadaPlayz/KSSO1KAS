@@ -923,7 +923,6 @@ message.channel.send('**اديك 15 ثانيه لتوجد العاصمه الص�
 }
 });
 
-    const fs = require('fs')
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
     points: 50,
