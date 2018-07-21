@@ -33,45 +33,41 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-const Fortnite = require('fortnite');
-const stats = new Fortnite("42114d32-c859-4168-9a8b-6cc660e71edc");
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
+  };
+if (message.content.startsWith(prefix + 'اموجيات')) { 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-exports.run = (client, message, args, tools) => {
+const type = require('./emoje/emoje.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**لديك 15 ثانيه**').then(msg => {
+    let embed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setFooter("اموجيات  | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setDescription(`** ${item.type}**`)
 
-        let platform;
-        let username;
+    msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
 
-        if (!['pc', 'xbl', 'psn'].includes(args[0])) return message.channel.send('**Please Include the platform: `!fortnite [ pc | xbl | psn ] <username>`**');
-        if (!args[1]) return message.channel.send('**من فضلك قم بكتابه: `$fortnite [ pc | xbl | psn ] <username>`**');
-
-        platform = args.shift();
-        username = args.join(' ');
-
-        stats.getInfo(username, platform).then(data => {
-                    const embed = new Discord.MessageEmbed()
-                        .setColor(0xffffff)
-                        .setTitle(`Stats for ${data.username}`)
-                        .setDescription(`**Top Placement**\n\n**Top 3s:** *${data.lifetimeStats[0].value}*\n**Top 5s:** *${data.lifetimeStats[1].value}*\n**Top 6s:** *${data.lifetimeStats[3].value}*\n**Top 12s:** *${data.lifetimeStats[4].value}*\n**Top 25s:** *${data.lifetimeStats[5].value}*`, true)
-                        .addField('Total Score', data.lifetimeStats[6].value, true)
-                        .addField('Matches Played', data.lifetimeStats[7].value, true)
-                        .addField('Wins', data.lifetimeStats[8].value, true)
-                        .addField('Win Percentage', data.lifetimeStats[9].value, true)
-                        .addField('Kills', data.lifetimeStats[10].value, true)
-                        .addField('K/D Ratio', data.lifetimeStats[11].value, true)
-                        .addField('Kills Per Minute', data.lifetimeStats[12].value, true)
-                        .addField('Time Played', data.lifetimeStats[13].value, true)
-                        .addField('Average Survival Time', data.lifetimeStats[14].value, true)
-
-                    message.channel.send(embed)
-                        .catch(error => {
-
-                            message.channel.send('Username not found!');
-
-                        })
-
-                    }
-                )
-            }
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            console.log(`[Typing] ماحد فكك الكلمه `);
+          })
+        })
+    })
+}
+});
 
 client.on("message", message => {    
     if(!message.channel.guild) return;
@@ -442,7 +438,6 @@ client.on("message", message => {
 ❖$server | معلومات السيرفر
 ❖$id | معلومات عن حسابك
 ❖$angaz | كتابه كلامك بصوره انجاز ماينكرفتي
-❖$fortnite | تفاصيل حساب فورتنايت
 ❖$members | حالات الاعضاء
 ❖$serveravatar | صوره السيرفر
 ❖$inv | رابط اضافه البوت
@@ -471,6 +466,8 @@ client.on("message", message => {
 ❖$مريم | لعبه مريم
 ❖$عقاب | لعبه عقاب
 ❖$hack | لعبه الهكر مع ذكر اسمك للي هكرته
+❖$لعبه اموجي | اموجيات
+❖$لعبه رياضيات | رياضيات
 ❖$hac-2 | لعبه الهكر من دون ذكر اسمك للي هكرته
 ❖$لعبه عواصم | عواصم
 ❖$لعبه فكك | فكك
