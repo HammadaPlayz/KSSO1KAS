@@ -2014,7 +2014,7 @@ client.on("message", message => {
   let userData = points[message.author.id];
   userData.points++;
   
-    let userData = point[message.author.id];
+    let memberData = point[message.author.id];
   userData.point++
   
 
@@ -2032,7 +2032,7 @@ client.on("message", message => {
       message.reply(` **${userData.points}** `).then(m => m.delete(100000));
 
       if (message.content.startsWith(prefix + "points")) {    
-      message.reply(` **${userData.point}** `).then(m => m.delete(100000));
+      message.reply(` **${memberData.point}** `).then(m => m.delete(100000));
   }
   fs.writeFile("./credits.json", JSON.stringify(points), (err) => {
   fs.writeFile("./points.json", JSON.stringify(point), (err) => {
