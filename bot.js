@@ -2083,7 +2083,7 @@ m.edit({embed: new Discord.RichEmbed().setTitle('لديك 15 ثانيه للاج
                 points[won.id].points++;
               })
               .catch(collected => { 
-                message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت ``${item.answers`);
+                message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت ``${item.answers}```);
                 console.log(`[Game] ماحد قال الاجابه`);
                     })
             })
@@ -2122,7 +2122,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت ``${item.answers}`);
+            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت ``${item.answers}```);
             console.log(`[Typing] ماحد قال الاجابه `);
           })
         })
@@ -2160,7 +2160,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت``${item.answers}`);
+            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت``${item.answers}```);
             console.log(`[Typing] ماحد قال الاجابه `);
           })
         })
