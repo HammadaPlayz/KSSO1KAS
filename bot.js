@@ -35,7 +35,7 @@ client.login(process.env.BOT_TOKEN);
 const ytdl = require('ytdl-core');
 const queue = new Map();
 
-bot.on('message', async msg => {
+client.on('message', async msg => {
     if (msg.author.bot) return undefined;
     if (!msg.content.startsWith(PREFIX)) return undefined;
     const args = msg.content.split(' ');
