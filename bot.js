@@ -32,6 +32,16 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "الجديد")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **امر $الجديد** ' ,' **يعرض لك كل جديد بلبوت** ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
+
 
    client.on("message", message => {
 	var prefix = "$";
@@ -737,15 +747,6 @@ setTimeout(function(){
 });
 
 
-client.on('message', message => {
-            if (message.content.startsWith(prefix + "الجديد")) {
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('     **امر $الجديد** ' ,' **يعرض لك كل جديد بلبوت** ')
-.setColor('#7d2dbe')
-  message.channel.sendEmbed(embed);
-    }
-});
 
   
 
