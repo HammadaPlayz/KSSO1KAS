@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '$'
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(`$help | $inv ${client.guilds.size} Servers ${client.users.size} Users `,"http://twitch.tv/NoobBot")
