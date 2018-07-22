@@ -68,6 +68,7 @@ client.on('message', message => {
 ❖$mute | اعطاء العضو ميوت
 ❖$unmute | ازاله الميوت من العضو
 ❖$clear| مسح الرسائل
+❖$set-prefix | تغير برفكس البوت 
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
 ❖$roleall [rank]| اعطاء رتبه للكل
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
