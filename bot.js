@@ -2214,7 +2214,7 @@ if (message.content.startsWith(prefix + 'فكك')) {
 
 const type = require('./fakk/fakk.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
-const answer = item.answer 
+const answer = item.answers
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
 };
@@ -2234,7 +2234,7 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: **ماحد جاوب و الاجابه كانت ${item.answer}**`);
+            message.channel.send(`:x: **ماحد جاوب و الاجابه كانت ${item.answers}**`);
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
