@@ -68,7 +68,6 @@ client.on('message', message => {
 ❖$mute | اعطاء العضو ميوت
 ❖$unmute | ازاله الميوت من العضو
 ❖$clear| مسح الرسائل
-❖$set-prefix | تغير برفكس البوت 
 ❖$role @someone [rank] | اعطاء رتبه لشخص 
 ❖$roleall [rank]| اعطاء رتبه للكل
 ❖$role bots [rank]| اعطاء رتبه لكل البوتات
@@ -87,40 +86,7 @@ client.on('message', message => {
 
 
 
-const db = require('quick.db');
-client.on('message' , async (message) => {
-       if(message.content.startsWith(prefix + "set-prefix")) {
-       let args = message.content.split(" ").slice(1);
-let fetched = await db.fetch(`prefix_${message.guild.id}`);
-if (fetched === null) prefix = '$';
-else prefix = fetched;
- 
 
-
-if (!message.member.hasPermission('ADMINISTRATOR') && message.author.id !== '424313545421750274') return message.channel.send('ماعندك صلاحيه')
-    .then(msg => msg.delete({
-        timeout: 10000
-    }));
-
-if (!args.join(' ')) return message.channel.send('اكتب برفكس الي تبيه')
-    .then(msg => msg.delete({
-        timeout: 10000
-    }));
-    
-
-db.set(`prefix_${message.guild.id}`, args.join(' '))
-    .then(i => {
-    
-    message.channel.sendMessage("", {embed: {
-      title: "تم تغير البرفكس!",
-      color: 0x06DF00,
-      description: `البرفكس صار${i}`,
-     
-    }})
-    })
-       }
-    
-       });
 
 client.on("message", message => {
 	var prefix = "$";
