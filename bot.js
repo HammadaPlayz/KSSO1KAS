@@ -36,7 +36,7 @@ client.on('message', message => {
             if (message.content.startsWith(prefix + "الجديد")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('     **امر $الجديد** ' ,' **يعرض لك كل جديد بلبوت** ')
+.addField('     **اذا ماحد قال الاجابه في الالعاب يقوله وش كانت الاجابه** ' ,' **NoobBot** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
