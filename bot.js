@@ -30,7 +30,7 @@ client.user.setGame(`$help | $inv ${client.guilds.size} Servers ${client.users.s
 client.login(process.env.BOT_TOKEN);
 
 
-
+const prefix = '$'
 client.on('message', async msg => { // eslint-disable-line
 	if (msg.author.bot) return undefined;
 	if (!msg.content.startsWith(PREFIX)) return undefined;
