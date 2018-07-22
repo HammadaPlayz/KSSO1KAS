@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
+const prefix = '$'
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(`$help | $inv ${client.guilds.size} Servers ${client.users.size} Users `,"http://twitch.tv/NoobBot")
@@ -30,17 +30,15 @@ client.user.setGame(`$help | $inv ${client.guilds.size} Servers ${client.users.s
 client.login(process.env.BOT_TOKEN);
 
 
-const prefix = '$'
 const ytdl = require('ytdl-core');
 const queue = new Map();
-
 client.on('message', async msg => {
     if (msg.author.bot) return undefined;
     if (!msg.content.startsWith(PREFIX)) return undefined;
     const args = msg.content.split(' ');
     const serverQueue = queue.get(msg.guild.id);
 
-    if (msg.content.startsWith(`${PREFIX}play`)) {
+    if (msg.content.startsWith(`$play`)) {
         const voiceChannel = msg.member.voiceChannel;
         if (!voiceChannel) return msg.channel.send('I am sorry but you need to be in a voice channel to play music!');
         const permissions = voiceChannel.permissionsFor(msg.client.user);
@@ -84,42 +82,42 @@ client.on('message', async msg => {
             return msg.channel.send(`**${song.title}** has been added to the queue!`);
         }
         return undefined;
-    } else if (msg.content.startsWith(`${PREFIX}skip`)) {
+    } else if (msg.content.startsWith(`$skip`)) {
         if (!msg.member.voiceChannel) return msg.channel.send('You are not in a voice channel!');
         if (!serverQueue) return msg.channel.send('There is nothing playing that I could skip for you.');
         serverQueue.connection.dispatcher.end();
         return undefined;
-    } else if (msg.content.startsWith(`${PREFIX}stop`)) {
+    } else if (msg.content.startsWith(`$stop`)) {
         if (!msg.member.voiceChannel) return msg.channel.send('يجب ان تكون في روم صوتي');
         if (!serverQueue) return msg.channel.send('مافي شيء مشغل اصلن');
         serverQueue.songs = [];
         serverQueue.connection.dispatcher.end();
         return undefined;
-    } else if(msg.content.startsWith(`${PREFIX}volume`)) {
+    } else if(msg.content.startsWith(`$volume`)) {
         if (!msg.member.voiceChannel) return msg.channel.send('You are not in a voice channel!');
         if (!serverQueue) return msg.channel.send('There is nothing playing.');
         if (!args[1]) return msg.channel.send(`The current volume is: **${serverQueue.volume}**`);
         serverQueue.volume = args[1];
         serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
         return msg.channel.send(`I set the volume to **${args[1]}**`);
-    } else if (msg.content.startsWith(`${PREFIX}np`)) {
+    } else if (msg.content.startsWith(`$np`)) {
         if (!serverQueue) return msg.channel.send('There is nothing playing.');
         return msg.channel.send(`Now playing: **${serverQueue.songs[0].title}**`);
-    } else if (msg.content.startsWith(`${PREFIX}queue`)) {
+    } else if (msg.content.startsWith(`$queue`)) {
         if (!serverQueue) return msg.channel.send('There is nothing playing.');
         return msg.channel.send(`
 __**Song queue:**__
 ${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
 **Now playing:** ${serverQueue.songs[0].title}
         `);
-    } else if (msg.content.startsWith(`${PREFIX}pause`)) {
+    } else if (msg.content.startsWith(`$pause`)) {
         if (serverQueue && serverQueue.playing) {
             serverQueue.playing = false;
             serverQueue.connection.dispatcher.pause();
             return msg.channel.send('توقفت الاغنيه');
         } 
         return msg.channel.send('لا يوجد شيء مشغل');
-    } else if (msg.content.startsWith(`${PREFIX}resume`)) {
+    } else if (msg.content.startsWith(`$resume`)) {
         if (serverQueue && !serverQueue.playing) {
             serverQueue.playing = true;
             serverQueue.connection.dispatcher.resume();
