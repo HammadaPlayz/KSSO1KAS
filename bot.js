@@ -30,7 +30,18 @@ client.user.setGame(`$help | $inv | ${client.guilds.size} Servers `,"http://twit
 
 client.login(process.env.BOT_TOKEN);
 
-
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "bot")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField(' سيرفرات البوت',`[${client.guilds.size}]  `)
+.addField(' مستخدمين',` [${client.users.size}] `)
+.addField('رومات',`[${client.channels.size}]`) 
+.addField(' بنق البوت ',`[${Date.now() - message.createdTimestamp}]`) 
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
 
 client.on('message', message => {
             if (message.content.startsWith(prefix + "الجديد")) {
@@ -90,6 +101,7 @@ client.on("message", message => {
 ❖$الي انضاف بلبوت اليوم | الجديد
 ❖$day | تفاصيل اليوم
 ❖$draw | كتابه كلامك في صوره
+❖$bot | معلومات البوت
 ❖$id | ايديك
 ❖$stim | منبه
 ❖$user-bc | رساله لشخص واحد بلخاص
