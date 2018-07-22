@@ -2234,16 +2234,13 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: **ماحد قال الاجابه الصحيحه**`);
+            message.channel.send(`:x: **ماحد جاوب و الاجابه كانت ${item.answer}**`);
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
     })
 }
 });
-
-
-
 
 
 
