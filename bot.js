@@ -35,6 +35,7 @@ const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const youtube = new YouTube(GOOGLE_API_KEY);
 const queue = new Map();
+var prefix = "$"
 
 client.on('message', async msg => { // eslint-disable-line
 	if (msg.author.bot) return undefined;
