@@ -2027,6 +2027,7 @@ if (message.content.startsWith(prefix + 'اعلم')) {
 
 const type = require('./a3lm/a3lm.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
+const answer = item.answers
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
 };
@@ -2046,7 +2047,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت ``${item.answers}`);
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
@@ -2066,6 +2067,7 @@ client.on('message', message => {
     
     const type = require('./emoje/emoje.json'); 
     const item = type[Math.floor(Math.random() * type.length)]; 
+const answer = item.answers
     const filter = response => { 
         return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
     };
@@ -2081,7 +2083,7 @@ m.edit({embed: new Discord.RichEmbed().setTitle('لديك 15 ثانيه للاج
                 points[won.id].points++;
               })
               .catch(collected => { 
-                message.channel.send(`:x: **لم يقم أحد بكتابة الايموجي بالوقت المناسب**`);
+                message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت ``${item.answers`);
                 console.log(`[Game] ماحد قال الاجابه`);
                     })
             })
@@ -2100,6 +2102,7 @@ if (message.content.startsWith(prefix + 'رياضيات')) {
 
 const type = require('./read/read.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
+const answer = item.answers
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
 };
@@ -2119,7 +2122,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت ``${item.answers}`);
             console.log(`[Typing] ماحد قال الاجابه `);
           })
         })
@@ -2137,6 +2140,7 @@ if (message.content.startsWith(prefix + 'ماينكرفت')) {
 
 const type = require('./minecraft/minecraft.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
+const answer = item.answers
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
 };
@@ -2156,7 +2160,7 @@ message.channel.send('**لديك 15 ثانيه**').then(msg => {
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت``${item.answers}`);
             console.log(`[Typing] ماحد قال الاجابه `);
           })
         })
@@ -2176,6 +2180,7 @@ if (message.content.startsWith(prefix + 'عواصم')) {
 
 const type = require('./3wasem/3wasem.json'); 
 const item = type[Math.floor(Math.random() * type.length)]; 
+const answer = item.answers
 const filter = response => { 
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
 };
@@ -2195,7 +2200,7 @@ message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه ا�
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: **لا يوجد احد كتب الاجابه الصحيحه**`);
+            message.channel.send(`:x: ماحد جاوب الاجابه الصحيحه والاجابه كانت ``${item.answers}```);
             console.log(`[Typing] ماحد قال الاجابه `);
           })
         })
@@ -2234,7 +2239,7 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
             points[won.id].points++;
           })
           .catch(collected => { 
-            message.channel.send(`:x: **ماحد جاوب و الاجابه كانت ${item.answers}**`);
+            message.channel.send(`:x: ماحد جاوب و الاجابه كانت ``${item.answers}```);
             console.log(`[Typing] ماحد فكك الكلمه `);
           })
         })
