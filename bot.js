@@ -36,7 +36,8 @@ client.on('message', message => {
             if (message.content.startsWith(prefix + "الجديد")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('     **اذا ماحد قال الاجابه في الالعاب يقوله وش كانت الاجابه** ' ,' **NoobBot** ')
+.addField('     **فكره** ' ,' **اذا كتبت الاجابه غلط بلالعاب رح يقولك وش كانت الاجابه الصحيحه** ')
+.addField('     **لعبه $عكس** ' ,' **لازم تعكس الكلمات** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -118,6 +119,7 @@ client.on("message", message => {
 ❖$لعبه رياضيات | رياضيات
 ❖$لعبه ماينكرفت | ماينكرفت
 ❖$hac-2 | لعبه الهكر من دون ذكر اسمك للي هكرته
+❖$عكس | لعبه عكس
 ❖$لعبه عواصم | عواصم
 ❖$لعبه فكك | فكك
 `)
@@ -2249,4 +2251,46 @@ message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then
 });
 
 
+
+
+
+
+
+
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 50,
+  };
+if (message.content.startsWith(prefix + 'عكس')) { 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+const type = require('./3ks/3ks.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const answer = item.answers
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**لديك 15 ثانيه لتعكس الكلمه**').then(msg => {
+    let embed = new Discord.RichEmbed()
+    .setColor('#000000')
+    .setFooter("عكس | NoobBot", 'https://cdn.discordapp.com/avatars/439427357175185408/3eb163b7656922ebc9e90653d50231f1.png?size=2048')
+    .setDescription(`**قم بعكس هذه الكلمه :${item.type}**`)
+
+    msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+        message.channel.send(`${collected.first().author} ✅ **الاجابه صحيحه**`); //mohamed192837465#7033صاحب الكود
+
+        console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: ماحد جاوب و الاجابه كانت **${item.answers}**`);
+            console.log(`[Typing] ماحد فكك الكلمه `);
+          })
+        })
+    })
+}
+});
 
