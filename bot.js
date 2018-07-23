@@ -47,8 +47,7 @@ client.on('message', message => {
             if (message.content.startsWith(prefix + "الجديد")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('     **فكره** ' ,' **اذا كتبت الاجابه غلط بلالعاب رح يقولك وش كانت الاجابه الصحيحه** ')
-.addField('     **لعبه $عكس** ' ,' **لازم تعكس الكلمات** ')
+.addField('     **ولا شيء** ' ,' **Nothinig...** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -329,7 +328,7 @@ client.on("message", message => {
 
           var args = message.content.substring(prefix.length).split(" ");
           if (message.content.startsWith(prefix + "clear")) {
- if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
+ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('انت لا تملك صلاحيه مسح الشات');
       var msg;
       msg = parseInt();
     
@@ -398,7 +397,7 @@ client.on('message', message => {
 let args = message.content.split(' ').slice(1).join(' ');
 if (message.content.startsWith('$bc')){
 	 if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('**ماعندك صلاحيه لا تحاول**');
-message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
+message.channel.sendMessage('يتم ارسال الرساله يرجا الانظار')
 client.users.forEach(m =>{
 var bc = new
 Discord.RichEmbed()
@@ -548,9 +547,9 @@ message.channel.send(image)
  const embed = new Discord.RichEmbed()
 
     .setDescription(`**Members info ✨
-💚 online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
-❤  dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
-💛  idle:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
+💚 اونلاين:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
+❤  حاله خضراء:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
+💛  حاله صفراء:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
 💛  الاوفلاين:     ${message.guild.members.filter(m=>m.presence.status == 'offline').size}
 💠   عدد الاعضاء:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
 💡 البوتات: ${message.guild.members.filter(m=>m.user.bot).size} **`)
@@ -567,7 +566,7 @@ if(message.author.bot) return;
 if(message.content === "$serveravatar"){ 
     const embed = new Discord.RichEmbed()
 
-.setTitle(`صورة ** ${message.guild.name} **`)
+.setTitle(`صوره سيرفر ** ${message.guild.name} **`)
 .setAuthor(message.author.username, message.guild.iconrURL)
 .setColor('RANDOM')
 .setImage(message.guild.iconURL)
@@ -580,7 +579,7 @@ message.channel.send({embed});
 client.on('message', message => {
   if(message.content === '$inv') {
   const embed = new Discord.RichEmbed()
-  .setTitle('NoobBot Link')
+  .setTitle('اضغت هنا')
   .setURL('https://discordapp.com/oauth2/authorize?client_id=460491129062948874&permissions=2080374975&scope=bot')
   .setColor('RANDOM')
   message.channel.send({embed: embed});
@@ -664,8 +663,8 @@ moment.locale('ar-TN');
       var id = new  Discord.RichEmbed()
     .setColor("!0a0909")
     .setAuthor(message.author.username, message.author.avatarURL) 
-.addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
-.addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)
+.addField('تاريخ صنه حسابك:', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
+.addField(': وقت دخولك السيرفر', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)
 .addField(': عدد الدعوات', inviteCount,false)
 .setFooter("Noobbot")  
     message.channel.sendEmbed(id);
@@ -859,7 +858,7 @@ client.on('message', message => {
             .setFooter(`Noobbot`);
         return message.channel.send({embed});
     } if (!reason) {
-        embed.addField("Hacker", `اكتب سبب تهكيره`)
+        embed.addField("Hacker", `اكتبله شيء قبل لا تهكره`)
         return message.channel.send({embed});
     }
     embed.addField("Hacker", `تم بنجاح ${user.tag}!`)
@@ -869,7 +868,7 @@ client.on('message', message => {
         .setColor(0xFFB200)
         .setTimestamp()
         .addField("NoobBot", `تم تهكيرك يا نوب`)
-		.addField("سبب تهكيرك", `**${reason}**`)
+		.addField("الهكر كتب لك", `**${reason}**`)
         .setFooter(`من ${message.author.tag}.`);
     user.send({embed: embed1});
 }
@@ -892,7 +891,7 @@ client.on('message', message => {
             .setFooter(`Noobbot`);
         return message.channel.send({embed});
     } if (!reason) {
-        embed.addField("Hacker", `اكتب سبب تهكيره`)
+        embed.addField("Hacker", `اكتبله شيء قبل لا تهكره`)
         return message.channel.send({embed});
     }
     embed.addField("Hacker", `تم بنجاح ${user.tag}!`)
@@ -902,7 +901,7 @@ client.on('message', message => {
         .setColor(0xFFB200)
         .setTimestamp()
         .addField("Noobbot", `تم تهكيرك يا نوب`)
-		.addField("سبب تهكيرك", `**${reason}**`)
+		.addField("الهكر قالك", `**${reason}**`)
         .setFooter(`الهكر غير معروف`);
     user.send({embed: embed1});
 }
@@ -1026,12 +1025,12 @@ client.on('message' , message => {
       }
           var role = message.mentions.roles.first();
             if(!role) {
-              message.reply("لا توجد رتبة بهذا الاسم");
+              message.reply("يرجا كتابه اسم رتبه موجوده");
                 return;
             }
         message.guild.members.filter(m => m.roles.get(role.id)).forEach(sa => {
         sa.send(
-          "الرسالة :" + "\n" +
+          "الرساله :" + "\n" +
         "**" + `${args[1]}` + "**"
           );
         });
@@ -1132,7 +1131,7 @@ client.on('message',  (message) => {
 
   message.channel.send({
     embed: {
-      description: `${message.author.username} عطاك كف  ${user.username}! 👊`,
+      description: `اخذ كف ${user.username}! 👊`,
       image: {
         url: punches[Math.floor(Math.random() * punches.length)]
       }
@@ -1150,142 +1149,6 @@ client.on('message',  (message) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-   
    
    
 client.on('message' , async (message) => {
@@ -1424,7 +1287,7 @@ client.on('message' , async (message) => {
 
   const catembed = new Discord.RichEmbed()
   .setColor("#7289DA")
-  .setTitle("Cat 🐱")
+  .setTitle("كيوت ")
   .setImage(body.file);
     
  message.channel.send(catembed);
@@ -1443,7 +1306,7 @@ client.on('message' , async (message) => {
     .get('https://dog.ceo/api/breeds/image/random');
     const embed = new Discord.RichEmbed()
     .setColor(0x954D23)
-    .setTitle("Woof :dog2:")
+    .setTitle("كيوت")
     .setImage(body.message)
     message.channel.send({embed})
     
