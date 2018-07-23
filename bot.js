@@ -96,7 +96,7 @@ var Active_Giveaway = "false";
 var entryCount = 0;
 var gWinner = "no one";
 
-bot.on('message', (message) => {
+client.on('message', (message) => {
  
       if ( (message.content.startsWith ('$create')) && (Active_Giveaway == "false") && ((message.member.roles.find("name", "Mod") ) || (message.member.roles.find("name", "Admin") ) || (message.member.roles.find("name", "Giveaways") ))  )
       {
@@ -113,7 +113,7 @@ bot.on('message', (message) => {
         message = message.channel.send
         ( fetchedMsg = new Discord.RichEmbed()
            
-            //.setThumbnail("https://i.imgur.com/ii17NzC.png")
+            .setThumbnail("https://i.imgur.com/ii17NzC.png")
             .setColor([151, 105, 181])
             .setTitle("الفائز بياخذ: "+gPrize)
             .setDescription(gTime + " Seconds")
