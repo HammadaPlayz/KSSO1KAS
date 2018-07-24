@@ -67,7 +67,7 @@ client.on('message', message => {
             if (message.content.startsWith(prefix + "الجديد")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('     **ولا شيء** ' ,' **Nothinig...** ')
+.addField('     **امر $say** ' ,' **يقوم هذه الامر بصنع بوت باسمك وصورتك ويقول الكلام الي تبيه وبعدها يمسح البوت** ')
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -118,6 +118,7 @@ client.on("message", message => {
 ❖$members | حالات الاعضاء
 ❖$serveravatar | صوره السيرفر
 ❖$inv | رابط اضافه البوت
+❖$say | تكرار كلامك ببوت بنفس صورتك واسمك
 ❖$الي انضاف بلبوت اليوم | الجديد
 ❖$day | تفاصيل اليوم
 ❖$draw | كتابه كلامك في صوره
