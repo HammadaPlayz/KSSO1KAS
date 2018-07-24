@@ -32,14 +32,17 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-client.on("message", async message => {
-    if (message.content.startsWith(prefix + "emoje")) {
-            const args = message.content.split(" ").slice(1).join(" ")
-    if (!args) return message.channel.send("**اكتب اسم ايموجي**");
-	message.send("https://emojipedia.org/${args}")
-message.channel.send(image)
-	}
-});
+    client.on("message", message => {
+        if (!message.content.startsWith(prefix)) return;
+          let command = message.content.split(" ")[0];
+          command = command.slice(prefix.length);
+            if(command === "emoje") {
+                    const args = message.content.split(" ").slice(1).join(" ")
+            if (!args) return message.channel.send("**اكتب اسم يموجي**");
+            message.author.sendMessage(`**https://emojipedia.org/beating-heart/${args}**`);
+            message.channel.send("**شوف خاصك**");
+            }
+        }); 
 
 client.on('message' , async (message) => {
  if (message.content.startsWith(prefix + 'say')) {
