@@ -39,7 +39,7 @@ client.on('message' , async (message) => {
  message.delete();
 args.shift() 
 let msg = args.join(' ') 
-message.channel.createWebhook(Noobbot, https://cdn.discordapp.com/attachments/470165841447485440/471303683733454869/NOOB_BOT_1.png) 
+message.channel.createWebhook("Noobbot, https://cdn.discordapp.com/attachments/470165841447485440/471303683733454869/NOOB_BOT_1.png") 
     .then(wb => {
         const user = new Discord.WebhookClient(wb.id, wb.token) 
         user.send(msg); 
