@@ -36,10 +36,9 @@ client.on('message' , async (message) => {
  if (message.content.startsWith(prefix + 'say')) {
   const args = message.content.substring(prefix.length).split(' ');
 
- message.delete();
 args.shift() 
 let msg = args.join(' ') 
-message.channel.createWebhook("Noobbot, https://cdn.discordapp.com/attachments/470165841447485440/471303683733454869/NOOB_BOT_1.png") 
+message.channel.createWebhook(message.author.username, message.author.avatarURL) 
     .then(wb => {
         const user = new Discord.WebhookClient(wb.id, wb.token) 
         user.send(msg); 
