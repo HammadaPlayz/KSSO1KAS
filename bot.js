@@ -36,6 +36,7 @@ client.on('message' , async (message) => {
  if (message.content.startsWith(prefix + 'say')) {
   const args = message.content.substring(prefix.length).split(' ');
 
+ message.delete();
 args.shift() 
 let msg = args.join(' ') 
 message.channel.createWebhook(message.author.username, message.author.avatarURL) 
