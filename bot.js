@@ -32,7 +32,22 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+client.on('message' , async (message) => {
+ if (message.content.startsWith(prefix + 'say')) {
+  const args = message.content.substring(prefix.length).split(' ');
 
+ message.delete();
+args.shift() 
+let msg = args.join(' ') 
+message.channel.createWebhook('Noobbot, https://cdn.discordapp.com/attachments/470165841447485440/471303683733454869/NOOB_BOT_1.png') 
+    .then(wb => {
+        const user = new Discord.WebhookClient(wb.id, wb.token) 
+        user.send(msg); 
+        user.delete() 
+    })
+    .catch(console.error)
+ }
+});
 
 
 client.on('message', message => {
