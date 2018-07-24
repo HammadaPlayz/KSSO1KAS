@@ -32,6 +32,15 @@ client.login(process.env.BOT_TOKEN);
 
 
 
+client.on("message", async message => {
+    if (message.content.startsWith(prefix + "emoje")) {
+            const args = message.content.split(" ").slice(1).join(" ")
+    if (!args) return message.channel.send("**اكتب اسم ايموجي**");
+	message.send("https://emojipedia.org/${args}")
+message.channel.send(image)
+	}
+});
+
 client.on('message' , async (message) => {
  if (message.content.startsWith(prefix + 'say')) {
   const args = message.content.substring(prefix.length).split(' ');
